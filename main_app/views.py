@@ -26,3 +26,15 @@ def signup(request):
     context = {'form':form, 'error_message': error_message }
     return render(request, 'registration/signup.html', context)
 
+def instructors_index(request):
+    return render(request, 'instructors/index.html')
+
+def instructors_details(request):
+    return render(request, 'instructors/details.html')
+
+def students_index(request):
+    return render(request, 'students/index.html')
+
+def students_details(request):
+    return render(request, 'students/details.html')
+
