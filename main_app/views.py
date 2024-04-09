@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.forms import UserCreationForm
+from .models import Lesson, Instructor, Student
 
 
 # Create your views here.
@@ -38,5 +41,17 @@ def students_index(request):
 def students_details(request):
     return render(request, 'students/details.html')
 
-def create(request):
-    return render(request, 'lessons/lesson_form.html')
+class LessonCreate(CreateView):
+    model = Lesson
+    fields = ['date', 'time', 'level', 'location']
+
+class LessonUpdate(UpdateView):
+    model = Lesson
+    fields = ['date', 'time', 'level', 'location']
+
+class LessonDelete(DeleteView):
+    model = Lesson
+    success_url ='/instructors/index'
+
+class LessonList(ListView):
+    model = Lesson

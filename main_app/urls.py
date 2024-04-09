@@ -10,5 +10,10 @@ urlpatterns = [
   path('instructors/index/', views.instructors_index, name='instructors_index'),
   path('students/index/', views.students_index, name='students_index'),
   path('students/details/', views.students_details, name='students_details'),
-  path('lessons/lesson_form/', views.create, name='create'),
+
+  path('lessons/create/', views.LessonCreate.as_view(), name='lessons_create'),
+  path('lessons/<int:lesson_id>/update/', views.LessonUpdate.as_view(), name='lessons_update'),
+  path('lessons/<int:lesson_id>/delete/', views.LessonDelete.as_view(), name='lessons_delete'),
+  path('lessons/index/', views.LessonList.as_view(), name='lessons_index'),
+
 ]
