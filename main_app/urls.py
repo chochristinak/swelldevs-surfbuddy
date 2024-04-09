@@ -10,4 +10,5 @@ urlpatterns = [
   path('instructors/index/', views.instructors_index, name='instructors_index'),
   path('students/index/', views.students_index, name='students_index'),
   path('students/details/', views.students_details, name='students_details'),
+  path('lessons/lesson_form/', views.create, name='create'),
 ]

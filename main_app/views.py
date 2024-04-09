@@ -38,3 +38,5 @@ def students_index(request):
 def students_details(request):
     return render(request, 'students/details.html')
 
+def create(request):
+    return render(request, 'lessons/lesson_form.html')
