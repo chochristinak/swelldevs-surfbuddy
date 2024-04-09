@@ -24,6 +24,7 @@ class Student(models.Model):
     email = models.EmailField
     age = models.PositiveIntegerField(validators=[MinValueValidator(5), MaxValueValidator(110)])
     level = models.CharField(
+        default=LEVELS[0],
         choices=LEVELS,
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -38,8 +39,8 @@ class Student(models.Model):
 class Instructor(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField
-    age = models.IntegerField()
-    rating = models.IntegerField()
+    age = models.IntegerField(default=15)
+    rating = models.IntegerField(default=5)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -53,6 +54,7 @@ class Lesson(models.Model):
     date = models.DateField()
     time = models.TimeField()
     level = models.CharField(
+        default=LEVELS[0],
         choices=LEVELS,
     )
     location = models.CharField(

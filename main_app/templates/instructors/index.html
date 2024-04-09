@@ -2,5 +2,25 @@
 {% block content %}
 
 <h1>All Instructors</h1>
+<form action="{% url 'lessons/lesson_form/' %}" method="GET">
+    {% csrf_token %}
+    <input type="submit" value="Add a Lesson">
+</form>
+
+<div class="row">
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content">
+            <div>
+                <h3>Current Lessons</h3>
+                <ul id="instructor-lesson-list">
+                    <li>Lesson1</li>
+                    <li>Lesson2</li>
+                    <li>Lesson3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
