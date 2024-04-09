@@ -4,4 +4,4 @@ from .models import Lesson
 class LessonForm(ModelForm):
   class Meta:
     model = Lesson
-    fields = ['date', 'time', 'location']
+    fields = ['date', 'time', 'level','location']

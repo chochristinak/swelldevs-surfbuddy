@@ -8,21 +8,22 @@
       <div class="card">
         <div class="card-content">
             <div>
-                <form action="{% url 'instructors_index' %}" method="POST">
+                <form action="{% url 'lessons_create' %}" method="POST">
                     {% csrf_token %}
-                    <label>Date</label>
-                    <input type="text" id="lesson-name">
-                    <label>Time</label>
-                    <input type="text" id="lesson-time">
-                    <label>Level</label>
-                    <input type="text" id="lesson-level">
-                    <label>Location</label>
-                    <input type="text" id="lesson-location">
+                    {{ form.as_table }}
                     <input type="submit" value="Confirm">
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    const selectLevelEl = document.getElementById('id_level');
+    M.FormSelect.init(selectLevelEl);
+    const selectLocationEl = document.getElementById('id_location');
+    M.FormSelect.init(selectLocationEl);
+  </script>
+  
 
 {% endblock %}

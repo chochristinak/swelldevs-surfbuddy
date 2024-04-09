@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> lessons details </h1>
+
+<div class="card-action">
+    <a href="{% url 'lessons_update' lesson.id %}"> edit lesson </a>
+    <a href="{% url 'lessons_delete' lesson.id %}"> delete lesson? </a>
+  </div>
+
+{% endblock %}
