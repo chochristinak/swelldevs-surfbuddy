@@ -3,16 +3,21 @@
 
 <h1>Lesson List</h1>
 
-{% for lesson in Lesson %}
-  <a href="{% url 'index' lessson.id %}">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ lesson.date }}</span>
-       
-       
-      </div>
-    </div>
-  </a>
-{% endfor %}
+{% if object %}
+  <h1>Edit <span class="teal-text">{{ object.level }}</span></h1>
+{% else %}
+  <h1>Add Lesson</h1>
+{% endif %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+      <table>
+          {{ form.as_table }}
+      </table>
+  <input type="submit" value="submit" class="btn">
+</form>
+
 
 {% endblock %}
+
+
