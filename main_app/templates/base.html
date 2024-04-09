@@ -33,12 +33,19 @@
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'instructors_index' %}">All Instructors</a></li>
-            <li><a href="{% url 'instructors_details' %}">Instructor Details</a></li>
+            <li>
+              <a href="{% url 'instructors_details' %}">Instructor Details</a>
+            </li>
             <li><a href="{% url 'students_details' %}">Student</a></li>
             <li><a href="{% url 'students_index' %}">All Students</a></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            
-            {% else %} 
+            <li>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn">Log Out</button>
+              </form>
+            </li>
+
+            {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
 
             <li><a href="{% url 'login' %}">Log In</a></li>
