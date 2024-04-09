@@ -1,29 +1,22 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} {% if object %}
+<h1>Edit <span class="teal-text">{{ object.name }}</span></h1>
+{% else %}
+<h1>Add Lesson</h1>
+{% endif %}
 
-<h1>Add a Lesson</h1>
-
-<div class="row">
-    <div class="col s6">
-      <div class="card">
-        <div class="card-content">
-            <div>
-                <form action="{% url 'lessons_create' %}" method="POST">
-                    {% csrf_token %}
-                    {{ form.as_table }}
-                    <input type="submit" value="Confirm">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<form action="" method="POST">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit!" class="btn" />
+</form>
 
 <script>
-    const selectLevelEl = document.getElementById('id_level');
-    M.FormSelect.init(selectLevelEl);
-    const selectLocationEl = document.getElementById('id_location');
-    M.FormSelect.init(selectLocationEl);
-  </script>
-  
+  const selectLevelEl = document.getElementById("id_level");
+  M.FormSelect.init(selectLevelEl);
+  const selectLocationEl = document.getElementById("id_location");
+  M.FormSelect.init(selectLocationEl);
+</script>
 
 {% endblock %}

@@ -1,6 +1,4 @@
-{% extends 'base.html' %} 
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Today's Schedule</h1>
 <a href="{% url 'lessons_create' %}">Add a Lesson</a>
@@ -11,9 +9,8 @@
       <div class="card-content">
         <div>
           <ul id="instructor-lesson-list">
-            
             <a href="{% url 'lessons_details' %}">Lesson Details</a>
-            
+
             <span class="card-title">{{ lesson }}</span>
             <p>time: {{lesson.time}}</p>
           </ul>
@@ -21,7 +18,5 @@
       </div>
     </div>
   </div>
-
 </div>
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}
