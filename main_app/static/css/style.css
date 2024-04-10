@@ -1,14 +1,50 @@
+.brand-logo {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+
+  border-radius: 50%;
+  padding-bottom: 0;
+}
+
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  nav, header.navbar-fixed, footer.page-footer{
+    background-color: rgb(147, 185, 229);
+  }
+  .page-footer{
+    align-items: baseline;
+    padding-bottom: 0;
+  }
+  ul#slide-out.sidenav{
+    border-style: groove;
+    width: 222px;
+  }
+  div.nav-wrapper{
+    height: 80px
   
-main {
-    flex: 1 0 auto;
-}
+  }
+  #sidenav-overlay { 
+    display: none;
+   }
+   header, main, footer {
+    padding-left: 100px;
+  }
   
-footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-}
+  @media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+  }
+        
+  body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+  
+    main {
+      flex: 1 0 auto;
+    }
+  
