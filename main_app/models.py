@@ -26,7 +26,7 @@ LEVELS = (
 # Student Model
 class Student(models.Model):                                                                        
     name = models.CharField(max_length=100)                                                        # student name
-    email = models.EmailField                                                                      # student email
+    email = models.EmailField()                                                                     # student email
     age = models.PositiveIntegerField(validators=[MinValueValidator(5), MaxValueValidator(110)])   # student age must positive and between the ages 5-110
     level = models.CharField(                                                                      # student skill level defaults to beginner
         default=LEVELS[0],

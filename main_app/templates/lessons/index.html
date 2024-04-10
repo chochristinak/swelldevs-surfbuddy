@@ -8,12 +8,10 @@
       <div class="card-content">
         <p>Date: {{ lesson.date }}</p>
         <p>Time: {{ lesson.time }}</p>
-        <p>Level: {{ lesson.level }}</p>
-        <p>Location: {{ lesson.location }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'lessons_update' lesson.id %}">Edit Lesson</a>
-        <a href="{% url 'lessons_delete' lesson.id %}">Delete Lesson</a>
+        <a href="{% url 'lessons_detail' lesson.id %}">Details</i></a>
+        
       </div>
     </div>
   </a>
