@@ -63,9 +63,12 @@ def lessons_details(request, lesson_id):
   })
 
 def assoc_student(request, lesson_id, student_id):
-  Lesson.objects.get(id=lesson_id).students.add(student_id)
+  Lesson.objects.get(id=lesson_id).student.add(student_id)
   print("hello")
-  return redirect('/lessons', lesson_id=lesson_id)
+  return redirect('students_index')
+
+class LessonList(ListView):
+  model = Lesson
 
 # Create a Lesson in the database using the CreateView Class
 class LessonCreate(CreateView):
@@ -87,6 +90,7 @@ class LessonUpdate(UpdateView):
 class LessonDelete(DeleteView):
   model = Lesson
   success_url = '/lessons'
+
 
 #-------------------- Students --------------------
 class StudentList(ListView):

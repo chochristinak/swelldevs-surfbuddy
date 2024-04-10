@@ -16,8 +16,9 @@ urlpatterns = [
   path('accounts/signup/', views.signup, name='signup'),
   
   path('students/', views.StudentList.as_view(), name='students_index'),
+  path('students/', views.LessonList.as_view(), name='students_index'),
   path('students/<int:pk>/', views.StudentDetail.as_view(), name='student_detail'),
   path('students/create/', views.StudentCreate.as_view(), name='students_create'),
-  path('lessons/<int:lesson_id>/assoc_student/<int:pk>/', views.assoc_student, name='assoc_student'),
+  path('lessons/<int:lesson_id>/assoc_student/<int:student_id>/', views.assoc_student, name='assoc_student'),
 
 ]
