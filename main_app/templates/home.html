@@ -21,6 +21,7 @@
                 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
                     <li><a href="{% url 'index' %}">View All My Lessons</a></li>

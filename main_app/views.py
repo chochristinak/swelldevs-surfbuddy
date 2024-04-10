@@ -16,6 +16,10 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+# Render the Tide Chart page
+def tidechart(request):
+  return render(request, 'tidechart.html')
+
 # Create a User from the information given and render the Signup Page
 def signup(request):
   error_message = ''
@@ -57,7 +61,9 @@ def lessons_details(request, lesson_id):
 
 def assoc_student(request, lesson_id, student_id):
   Lesson.objects.get(id=lesson_id).student.add(student_id)
-  return redirect('detail', lesson_id=lesson_id)
+  print('hello')
+  return redirect('/lessons', lesson_id=lesson_id)
+
 
 # Create a Lesson in the database using the CreateView Class
 class LessonCreate(CreateView):
