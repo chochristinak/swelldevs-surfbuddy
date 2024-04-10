@@ -21,6 +21,8 @@
         <li><a href="{% url 'about' %}">About</a></li>
       </div>
       {% if user.is_authenticated %}
+      <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
+      <li><a href="{% url 'students_create' %}">Add a Student</a></li>
       <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
       <li><a href="{% url 'index' %}">View All Lessons</a></li>
       <li><a href="{% url 'students_index' %}">View My Lessons</a></li>

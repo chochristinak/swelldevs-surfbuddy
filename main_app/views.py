@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
+
 from django.contrib.auth.forms import UserCreationForm
 from .models import Lesson, Student
+from .forms import StudentForm
 
 
 #-------------------- Functions --------------------
@@ -53,17 +55,17 @@ def lessons_index(request):
 def lessons_details(request, lesson_id):
   lesson = Lesson.objects.get(id=lesson_id)
   students = lesson.student.all()
-  
+  student_form = StudentForm()
   return render(request, 'lessons/detail.html', {
     'lesson': lesson,
-    'students': students
+    'students': students,
+    'student_form': student_form
   })
 
 def assoc_student(request, lesson_id, student_id):
-  Lesson.objects.get(id=lesson_id).student.add(student_id)
-  print('hello')
+  Lesson.objects.get(id=lesson_id).students.add(student_id)
+  print("hello")
   return redirect('/lessons', lesson_id=lesson_id)
-
 
 # Create a Lesson in the database using the CreateView Class
 class LessonCreate(CreateView):
@@ -87,8 +89,14 @@ class LessonDelete(DeleteView):
   success_url = '/lessons'
 
 #-------------------- Students --------------------
-
 class StudentList(ListView):
+  model = Student
+
+class StudentCreate(CreateView):
+  model = Student
+  fields = '__all__'
+
+class StudentDetail(DetailView):
   model = Student
 
 
