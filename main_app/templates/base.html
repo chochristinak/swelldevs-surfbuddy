@@ -24,6 +24,7 @@
       <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
       <li><a href="{% url 'index' %}">View All Lessons</a></li>
       <li><a href="{% url 'students_index' %}">View My Lessons</a></li>
+      <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
       <li>
         <form action="{% url 'logout' %}" method="POST">
           {% csrf_token %}
@@ -48,9 +49,11 @@
               </a>
             </div>
             <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
-            <li><a href="{% url 'index' %}">View All My Lessons</a></li>
+            <li><a href="{% url 'students_index' %}">My Lessons</a></li>
+            <li><a href="{% url 'index' %}">View All Lessons</a></li>
             <li>
               <form action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}

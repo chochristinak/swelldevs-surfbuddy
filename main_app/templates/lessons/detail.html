@@ -16,7 +16,8 @@
         <div class="card-action">
           <a href="{% url 'lessons_update' lesson.id %}"><i class="material-icons">edit</i></a>
           <a href="{% url 'lessons_delete' lesson.id %}"><i class="material-icons">delete</i></a>
-           <a href=""><i class="material-icons">add</i></a>
+        
+          <a href="{% url 'students_index' %}"><i class="material-icons">add</i></a>
         </div>
       </div>
     </div>
