@@ -1,9 +1,10 @@
 #-------------------- Module Imports --------------------
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Lesson
+from .models import Lesson, Student
 
 
 #-------------------- Functions --------------------
@@ -47,10 +48,16 @@ def lessons_index(request):
 # Render the Details Page for the specified Lesson
 def lessons_details(request, lesson_id):
   lesson = Lesson.objects.get(id=lesson_id)
-
+  students = lesson.student.all()
+  
   return render(request, 'lessons/detail.html', {
     'lesson': lesson,
+    'students': students
   })
+
+def assoc_student(request, lesson_id, student_id):
+  Lesson.objects.get(id=lesson_id).student.add(student_id)
+  return redirect('detail', lesson_id=lesson_id)
 
 # Create a Lesson in the database using the CreateView Class
 class LessonCreate(CreateView):
@@ -73,11 +80,10 @@ class LessonDelete(DeleteView):
   model = Lesson
   success_url = '/lessons'
 
-
-
-
 #-------------------- Students --------------------
 
+class StudentList(ListView):
+  model = Student
 
 
 #-------------------- Instructors --------------------
