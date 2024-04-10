@@ -1,5 +1,57 @@
-{% extends 'base.html' %} {% block content %}
+{% load static %}
 
-<h1>Home</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-{% endblock %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Surf Buddy</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{% url 'home' %}" class="brand-logo center">&nbsp;&nbsp;Surf Buddy</a></li>
+                <!-- <img class="circle responsive-image"src="https://totemsurftribe.files.wordpress.com/2024/04/21fe4e7b-ca7a-4713-bbed-20265bfdab48.jpeg?resize=438%2C438"> -->
+                
+                
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+                    <li><a href="{% url 'index' %}">View All My Lessons</a></li>
+                    <li>
+                      <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Log Out</button>
+                      </form>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+<body>
+    <main class="container">
+        {% block content %}
+        
+
+        <h1>Home</h1>
+
+
+
+
+        {% endblock %}
+    </main>
+    <footer class="page-footer">
+        <div class="right">All Rights Reserved, &copy; 2024 Surf Buddy &nbsp;</div>
+    </footer>
+</body>
+
+</html>

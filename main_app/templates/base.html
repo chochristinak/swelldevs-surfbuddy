@@ -2,34 +2,50 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Surf Buddy</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </head>
-  <body>
-    <header class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li>
-              <a href="{% url 'home' %}" class="left brand-logo"
-                >&nbsp;&nbsp;Surf Buddy</a
-              >
-            </li>
-          </ul>
-          <ul class="right">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Surf Buddy</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <ul id="slide-out" class="sidenav">
+    <ul class="center">
+      <div>
+        <li><a href="{% url 'about' %}">About</a></li>
+      </div>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+      <li><a href="{% url 'index' %}">View All My Lessons</a></li>
+      <li>
+        <form action="{% url 'logout' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Log Out</button>
+        </form>
+      </li>
+      {% else %}
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a href="{% url 'login' %}">Log In</a></li>
+      {% endif %}
+    </ul>
+  </ul>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <nav> <!-- navbar content here  --> </nav>
+        <ul id="slide-out" class="sidenav sidenav-fixed">
+
+          <ul class="center">
+            <div>
+              <a href="{% url 'home' %}"><img src="" class="logo-img">
+              </a>
+            </div>
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
@@ -44,15 +60,37 @@
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
             <li><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
+
           </ul>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </header>
+
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const navEl = document.querySelector('.sidenav');
+        var instances = M.Sidenav.init(navEl, {
+        })
+        var collapsibleElem = document.querySelector('.collapsible');
+        var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+      });
+
+    </script>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="right">All Rights Reserved, &copy; 2024 Surf Buddy &nbsp;
         </div>
-      </nav>
-    </header>
-    <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">
-        All Rights Reserved, &copy; 2024 Surf Buddy &nbsp;
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
+
 </html>
