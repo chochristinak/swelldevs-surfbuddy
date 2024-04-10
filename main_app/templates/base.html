@@ -32,35 +32,27 @@
           <ul class="right">
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'instructors_index' %}">All Instructors</a></li>
-            <li>
-              <a href="{% url 'instructors_details' %}">Instructor Details</a>
-            </li>
-            <li><a href="{% url 'students_details' %}">Student</a></li>
-            <li><a href="{% url 'students_index' %}">All Students</a></li>
+            <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+            <li><a href="{% url 'index' %}">View All My Lessons</a></li>
             <li>
               <form action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" class="btn">Log Out</button>
               </form>
             </li>
-
             {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
-
             <li><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
           </ul>
         </div>
       </nav>
     </header>
-    <main class="container">
-      {% block content %}
-      <!-- All content we want to add from other HTML's will go between here -->
-      {% endblock %}
-    </main>
+    <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer">
-      <div class="right">All Rights Reserved, &copy; Surf Buddy &nbsp;</div>
+      <div class="right">
+        All Rights Reserved, &copy; 2024 Surf Buddy &nbsp;
+      </div>
     </footer>
   </body>
 </html>

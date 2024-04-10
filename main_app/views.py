@@ -1,72 +1,83 @@
+#-------------------- Module Imports --------------------
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Lesson, Instructor, Student
-from .forms import LessonForm
+from .models import Lesson
 
 
-# Create your views here.
+#-------------------- Functions --------------------
+# Render the Home Page
 def home(request):
-    return render(request, 'home.html')
+  return render(request, 'home.html')
 
+# Render the About Page
 def about(request):
-    return render(request, 'about.html')
+  return render(request, 'about.html')
 
-
+# Create a User from the information given and render the Signup Page
 def signup(request):
-    error_message = ''
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('index')
+  error_message = ''
+  if request.method == 'POST':
+    # This is how to create a 'user' form object
+    # that includes the data from the browser
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      # This will add the user to the database
+      user = form.save()
+      # This is how we log a user in via code
+      login(request, user)
+      return redirect('index')
     else:
-      error_message = 'Invalid'
-    form = UserCreationForm()
-    context = {'form':form, 'error_message': error_message }
-    return render(request, 'registration/signup.html', context)
+      error_message = 'Invalid sign up - try again'
+  # A bad POST or a GET request, so render signup.html with an empty form
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)
 
-def instructors_index(request):
-    return render(request, 'instructors/index.html')
 
-def instructors_details(request):
-    return render(request, 'instructors/details.html')
+#-------------------- Lessons --------------------
+# Render the Lessons Index Page with all the lessons in the database
+def lessons_index(request):
+  lessons = Lesson.objects.all()
+  return render(request, 'lessons/index.html', {
+    'lessons': lessons
+  })
 
-def students_index(request):
-    return render(request, 'students/index.html')
+# Render the Details Page for the specified Lesson
+def lessons_details(request, lesson_id):
+  lesson = Lesson.objects.get(id=lesson_id)
 
-def students_details(request):
-    return render(request, 'students/details.html')
+  return render(request, 'lessons/detail.html', {
+    'lesson': lesson,
+  })
 
-def lessons_detail(request, lesson_id):
-    lesson = Lesson.objects.get(id=lesson_id)
-    id_list = lesson.all().lesson_list('id')
-    lesson_form = LessonForm()
-    return render(request, 'lessons/details.html', {
-        'lesson': lesson
-    })
-
-class LessonDetail(DetailView):
-    model = Lesson
-    success_url = '/lessons/lesson_id/details'
-
+# Create a Lesson in the database using the CreateView Class
 class LessonCreate(CreateView):
-    model = Lesson
-    fields = ['date', 'time', 'level', 'location']
-    success_url = '/lessons/index'
+  model = Lesson
+  fields = ['date', 'time', 'level', 'location']
+  success_url = '/lessons'
 
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+# Update a Lesson in the database using the UpdateView Class
 class LessonUpdate(UpdateView):
-    model = Lesson
-    fields = ['date', 'time', 'level', 'location']
+  model = Lesson
+  fields = ['date', 'time', 'level', 'location']
+  success_url = '/lessons'
 
+# Delete a Lesson in the database using the DeleteView Class
 class LessonDelete(DeleteView):
-    model = Lesson
-    success_url ='/instructors/index'
+  model = Lesson
+  success_url = '/lessons'
 
-class LessonList(ListView):
-    model = Lesson
 
+
+
+#-------------------- Students --------------------
+
+
+
+#-------------------- Instructors --------------------
