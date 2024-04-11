@@ -21,21 +21,21 @@
         <li><a href="{% url 'about' %}">About</a></li>
       </div>
       {% if user.is_authenticated %}
-      <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
-      <li><a href="{% url 'students_create' %}">Add a Student</a></li>
-      <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
-      <li><a href="{% url 'index' %}">View All Lessons</a></li>
-      <li><a href="{% url 'students_index' %}">View My Lessons</a></li>
-      <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
-      <li>
-        <form action="{% url 'logout' %}" method="POST">
-          {% csrf_token %}
-          <button type="submit" class="btn">Log Out</button>
-        </form>
-      </li>
+        <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
+        <li><a href="{% url 'index' %}">View All Lessons</a></li>
+        <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+        <li><a href="{% url 'students_index' %}">View All Students</a></li>
+        <li><a href="{% url 'students_create' %}">Add a Student</a></li>
+        <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+        <li>
+          <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn">Log Out</button>
+          </form>
+        </li>
       {% else %}
-      <li><a href="{% url 'signup' %}">Sign Up</a></li>
-      <li><a href="{% url 'login' %}">Log In</a></li>
+        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        <li><a href="{% url 'login' %}">Log In</a></li>
       {% endif %}
     </ul>
   </ul>
@@ -47,26 +47,25 @@
 
           <ul class="center">
             <div>
-              <a href="{% url 'home' %}"><img src="" class="logo-img">
-              </a>
+              <a href="{% url 'home' %}"><img src="" class="logo-img"></a>
             </div>
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
             {% if user.is_authenticated %}
-            <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
-            <li><a href="{% url 'students_create' %}">Add a Student</a></li>
-            <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
-            <li><a href="{% url 'students_index' %}">My Lessons</a></li>
-            <li><a href="{% url 'index' %}">View All Lessons</a></li>
-            <li>
-              <form action="{% url 'logout' %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="btn">Log Out</button>
-              </form>
-            </li>
+              <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
+              <li><a href="{% url 'index' %}">View All Lessons</a></li>
+              <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+              <li><a href="{% url 'students_index' %}">View All Students</a></li>
+              <li><a href="{% url 'students_create' %}">Add a Student</a></li>
+              <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+              <li>
+                <form action="{% url 'logout' %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">Log Out</button>
+                </form>
+              </li>
             {% else %}
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+              <li><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
 
           </ul>

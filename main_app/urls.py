@@ -13,12 +13,14 @@ urlpatterns = [
   path('lessons/create/', views.LessonCreate.as_view(), name='lessons_create'),
   path('lessons/<int:pk>/update/', views.LessonUpdate.as_view(), name='lessons_update'),
   path('lessons/<int:pk>/delete/', views.LessonDelete.as_view(), name='lessons_delete'),
-  path('accounts/signup/', views.signup, name='signup'),
-  
+  path('lessons/<int:lesson_id>/assoc_student/<int:student_id>/', views.assoc_student, name='assoc_student'),
+  path('lessons/<int:lesson_id>/delete_student/<int:student_id>/', views.delete_student, name='delete_student'),
   path('students/', views.StudentList.as_view(), name='students_index'),
-  path('students/', views.LessonList.as_view(), name='students_index'),
   path('students/<int:pk>/', views.StudentDetail.as_view(), name='student_detail'),
   path('students/create/', views.StudentCreate.as_view(), name='students_create'),
-  path('lessons/<int:lesson_id>/assoc_student/<int:student_id>/', views.assoc_student, name='assoc_student'),
+  path('students/<int:pk>/update/', views.StudentUpdate.as_view(), name='students_update'),
+  path('students/<int:pk>/delete/', views.StudentDelete.as_view(), name='students_delete'),
+  path('accounts/signup/', views.signup, name='signup'),
 
+  path('students/', views.LessonList.as_view(), name='students_index'),
 ]
