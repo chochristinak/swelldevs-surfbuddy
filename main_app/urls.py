@@ -21,6 +21,7 @@ urlpatterns = [
   path('students/<int:pk>/update/', views.StudentUpdate.as_view(), name='students_update'),
   path('students/<int:pk>/delete/', views.StudentDelete.as_view(), name='students_delete'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('instructors/', views.instructors_index, name='instructors_index'),
 
   path('students/', views.LessonList.as_view(), name='students_index'),
 ]

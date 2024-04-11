@@ -51,6 +51,8 @@ class Instructor(models.Model):
     email = models.EmailField                                                                      # instructor email
     age = models.IntegerField(default=15)                                                          # instructor age must be older than 15
     rating = models.IntegerField(default=5)                                                        # instructor rating
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
     
     # Foreign Key of the generic User model
     user = models.ForeignKey(User, on_delete=models.CASCADE)                                       

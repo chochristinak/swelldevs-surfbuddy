@@ -22,6 +22,7 @@
       </div>
       {% if user.is_authenticated %}
         <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
+        <li><a href="{% url 'instructors_index' %}">Instructor Lessons</a></li>
         <li><a href="{% url 'index' %}">View All Lessons</a></li>
         <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
         <li><a href="{% url 'students_index' %}">View All Students</a></li>
@@ -52,6 +53,7 @@
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
               <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
+              <li><a href="{% url 'instructors_index' %}">Instructor Lessons</a></li>
               <li><a href="{% url 'index' %}">View All Lessons</a></li>
               <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
               <li><a href="{% url 'students_index' %}">View All Students</a></li>

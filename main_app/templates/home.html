@@ -19,7 +19,7 @@
     <!-- <img class="circle responsive-image"src="https://totemsurftribe.files.wordpress.com/2024/04/21fe4e7b-ca7a-4713-bbed-20265bfdab48.jpeg?resize=438%2C438"> -->
 
 
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a href="{% url 'about' %}">About</a></li>
       {% if user.is_authenticated %}
         <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
@@ -45,12 +45,22 @@
 <body>
   <main class="container">
     {% block content %}
-
-
+   
     <h1>Home</h1>
+   
+    <div class="row">
 
+      <div class="col s4">
+        <!-- Promo Content 1 goes here -->
+      </div>
+      <div class="col s4">
+        <!-- Promo Content 2 goes here -->
+      </div>
+      <div class="col s4">
+        <!-- Promo Content 3 goes here -->
+      </div>
 
-
+    </div>
 
     {% endblock %}
   </main>

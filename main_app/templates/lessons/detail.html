@@ -19,7 +19,7 @@
           <a href="{% url 'lessons_delete' lesson.id %}"><i class="material-icons">delete</i></a>
           <form action="{% url 'assoc_student' lesson.id user.id %}" method="POST">
             {% csrf_token %}
-            <button type="submit" class="btn">
+            <button type="submit" class="waves-effect waves-light btn-small">
               <i class="material-icons">add</i>
             </button>
           </form>
@@ -40,7 +40,7 @@
           <div class="card-action">
             <form action="{% url 'delete_student' lesson.id student.id %}" method="DELETE">
               {% csrf_token %}
-              <button type="submit" class="btn">Delete</button>
+              <button type="submit" class="waves-effect waves-light btn-small">Delete</button>
             </form>
           </div>
         </div>
@@ -49,7 +49,7 @@
         <h5>No Students</h5>
       {% endif %}
     </div>
-    <!-- Available toys will come after this line -->
+    <!-- Available students will come after this line -->
     <div class="col s6">
       <h3>Available Students</h3>
       {% if students.count %} 
@@ -61,7 +61,7 @@
           <div class="card-action">
             <form action="{% url 'assoc_student' lesson.id student.id %}" method="POST">
               {% csrf_token %}
-              <button type="submit" class="btn">Add</button>
+              <button type="submit" class="waves-effect waves-light btn-small">Add</button>
             </form>
           </div>
         </div>
