@@ -135,8 +135,7 @@ class InstructorDetail(DetailView):
 
 class InstructorCreate(CreateView):
   model = Instructor
-  fields = ['name', 'email', 'age', 'rating']
-  success_url = '/instructors'
+  fields = '__all__'
 
 class InstructorUpdate(UpdateView):
   model = Instructor
@@ -148,7 +147,7 @@ class InstructorDelete(DeleteView):
 
 
 #-------------------- Instructors --------------------
-# keep as separte view
+# keep as separate view
 # write function 
 # specify model
 #render correct template
