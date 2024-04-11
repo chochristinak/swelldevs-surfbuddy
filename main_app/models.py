@@ -63,7 +63,7 @@ class Instructor(models.Model):
 
     # canonical URL of instructor object
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'instructor_id': self.id})
+        return reverse('instructor_detail', kwargs={'pk': self.id})
 
 # Lesson Model
 class Lesson(models.Model):
