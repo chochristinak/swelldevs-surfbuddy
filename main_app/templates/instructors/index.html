@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+lesson.instructors.all
+
+<div class="row">
+    <div class="col s6">
+      <h3>Students in {{ lesson }}</h3>
+      {% if lesson.student.count %} 
+        {% for student in lesson.student.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{{ student.name }}</span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'delete_student' lesson.id student.id %}" method="DELETE">
+              {% csrf_token %}
+              <button type="submit" class="waves-effect waves-light btn-small">Delete</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %} 
+      {% else %}
+        <h5>No Students</h5>
+      {% endif %}
+    </div>
+
+    {% endblock %}

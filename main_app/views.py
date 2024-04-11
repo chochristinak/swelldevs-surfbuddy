@@ -132,3 +132,22 @@ class StudentDelete(DeleteView):
 
 
 #-------------------- Instructors --------------------
+# keep as separte view
+# write function 
+# specify model
+#render correct template
+
+@login_required
+def instructors_index(request):
+  lessons = Lesson.objects.all()
+  return render(request, 'instructors/index.html', {
+    'lessons': lessons,
+  })
+
+# see all lessons
+# class InstructorLessonList(ListView):
+#   model: Lesson
+#   template_view = 'instructors/index.html'
+
+# def instructors_details(request, )
+
