@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student, Instructor
-from .forms import StudentForm, InstructorForm
+from .forms import StudentForm, LessonForm
 
 
 #-------------------- Functions --------------------
@@ -130,8 +130,30 @@ class StudentDelete(DeleteView):
   model = Student
   success_url = '/students'
 
+
+#-------------------- Instructors --------------------
+@login_required
+def instructors_index(request):
+  instructors = Instructor.objects.all()
+  return render(request, 'instructors/index.html', {
+    'instructors': instructors,
+  })
+
+# def instructor_detail(request, instructor_id):
+#   instructor = Instructor.objects.get(id=instructor_id)
+#   lesson_form = LessonForm()
+#   return render(request, 'instructors/detail.html', {
+#     'instructors': instructor,
+#     'lesson_form': lesson_form
+#   })
+
 class InstructorDetail(DetailView):
   model = Instructor
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['lesson_list'] = Lesson.objects.all()
+    return context
 
 class InstructorCreate(CreateView):
   model = Instructor
@@ -145,24 +167,12 @@ class InstructorDelete(DeleteView):
   model = Instructor
   success_url = '/instructors'
 
-
-#-------------------- Instructors --------------------
-# keep as separate view
-# write function 
-# specify model
-#render correct template
+@login_required
+def assoc_instructor(request, lesson_id, instructor_id):
+  Lesson.objects.get(id=lesson_id).instructor.add(instructor_id)
+  return redirect('instructors_details', instructor_id=instructor_id)
 
 @login_required
-def instructors_index(request):
-  lessons = Lesson.objects.all()
-  return render(request, 'instructors/index.html', {
-    'lessons': lessons,
-  })
-
-# see all lessons
-# class InstructorLessonList(ListView):
-#   model: Lesson
-#   template_view = 'instructors/index.html'
-
-# def instructors_details(request, )
-
+def delete_instructor(request, lesson_id, instructor_id):
+  Lesson.objects.get(id=lesson_id).instructor.remove(instructor_id)
+  return redirect('instructors_details', instructor_id=instructor_id)

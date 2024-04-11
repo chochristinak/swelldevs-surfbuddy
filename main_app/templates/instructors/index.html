@@ -3,18 +3,18 @@
 
 <div class="row">
     <div class="col s6">
-      <h3>My Instructor Lessons / My detail page {{ lesson }}</h3>
+      <h3>Instructors / My detail page</h3>
 
-{% for lesson in lessons %}
+{% for instructor in instructors %}
   <div class="card">
     <div class="card-content">
-      <p>{{ lesson }}</p>
-      <p>Date: {{ lesson.date }}</p>
-      <p>Time: {{ lesson.time }}</p>
-      <p>Location: {{lesson.location }}</p>
+      <p>Name: {{ instructor.name }}</p>
+      <p>Email: {{ instructor.email }}</p>
+      <p>Age: {{ instructor.age }}</p>
+      <p>Rating: {{instructor.rating }}</p>
     </div>
     <div class="card-action">
-      <a href="{% url 'lessons_details' lesson.id %}">Details</i></a>
+      <a href="{% url 'instructor_detail' instructor.id %}">Details</i></a>
     </div>
   </div>
 {% endfor %}

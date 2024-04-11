@@ -23,10 +23,11 @@ urlpatterns = [
   path('accounts/signup/', views.signup, name='signup'),
   path('instructors/', views.instructors_index, name='instructors_index'),
   path('instructors/<int:pk>/', views.InstructorDetail.as_view(), name='instructor_detail'),
-
   path('instructors/create', views.InstructorCreate.as_view(), name='instructors_create'),
   path('instructors/<int:pk>/update', views.InstructorUpdate.as_view(), name='instructors_update'),
   path('instructors/<int:pk>/delete', views.InstructorDelete.as_view(), name='instructors_delete'),
+  path('lessons/<int:lesson_id>/assoc_instructor/<int:instructor_id>/', views.assoc_instructor, name='assoc_instructor'),
+  path('lessons/<int:lesson_id>/delete_instructor/<int:instructor_id>/', views.delete_instructor, name='delete_instructor'),
 
   # path('students/', views.LessonList.as_view(), name='students_index'),
 ]
