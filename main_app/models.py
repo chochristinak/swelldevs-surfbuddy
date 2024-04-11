@@ -48,7 +48,7 @@ class Student(models.Model):
 # Instructor Model
 class Instructor(models.Model):
     name = models.CharField(max_length=100)                                                        # instructor name  
-    email = models.EmailField                                                                      # instructor email
+    email = models.CharField(default='example@mail.com')                                                                      # instructor email
     age = models.IntegerField(default=15)                                                          # instructor age must be older than 15
     rating = models.IntegerField(default=5)                                                        # instructor rating
     student = models.ForeignKey(Student, on_delete=models.CASCADE)

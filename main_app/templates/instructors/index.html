@@ -1,28 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-lesson.instructors.all
-
 <div class="row">
     <div class="col s6">
-      <h3>Students in {{ lesson }}</h3>
-      {% if lesson.student.count %} 
-        {% for student in lesson.student.all %}
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">{{ student.name }}</span>
-          </div>
-          <div class="card-action">
-            <form action="{% url 'delete_student' lesson.id student.id %}" method="DELETE">
-              {% csrf_token %}
-              <button type="submit" class="waves-effect waves-light btn-small">Delete</button>
-            </form>
-          </div>
-        </div>
-      {% endfor %} 
-      {% else %}
-        <h5>No Students</h5>
-      {% endif %}
-    </div>
+      <h3>My Instructor Lessons / My detail page {{ lesson }}</h3>
 
-    {% endblock %}
+{% for lesson in lessons %}
+  <div class="card">
+    <div class="card-content">
+      <p>{{ lesson }}</p>
+      <p>Date: {{ lesson.date }}</p>
+      <p>Time: {{ lesson.time }}</p>
+      <p>Location: {{lesson.location }}</p>
+    </div>
+    <div class="card-action">
+      <a href="{% url 'lessons_details' lesson.id %}">Details</i></a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
+
+
+
