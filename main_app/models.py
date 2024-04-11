@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import date
 
+
 #-------------------- Constants --------------------
 # locations to surf
 BREAKS = (
@@ -26,7 +27,7 @@ LEVELS = (
 # Student Model
 class Student(models.Model):                                                                        
     name = models.CharField(max_length=100)                                                        # student name
-    email = models.CharField(blank=True)                                                                    # student email
+    email = models.CharField(blank=True)                                                           # student email
     age = models.PositiveIntegerField(validators=[MinValueValidator(5), MaxValueValidator(110)])   # student age must positive and between the ages 5-110
     level = models.CharField(                                                                      # student skill level defaults to beginner
         default=LEVELS[0],

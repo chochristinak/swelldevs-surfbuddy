@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
-
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student
 from .forms import StudentForm
 
@@ -19,6 +20,7 @@ def about(request):
   return render(request, 'about.html')
 
 # Render the Tide Chart page
+@login_required
 def tidechart(request):
   return render(request, 'tidechart.html')
 
@@ -45,6 +47,7 @@ def signup(request):
 
 #-------------------- Lessons --------------------
 # Render the Lessons Index Page with all the lessons in the database
+@login_required
 def lessons_index(request):
   lessons = Lesson.objects.all()
   return render(request, 'lessons/index.html', {
@@ -52,9 +55,12 @@ def lessons_index(request):
   })
 
 # Render the Details Page for the specified Lesson
+@login_required
 def lessons_details(request, lesson_id):
   lesson = Lesson.objects.get(id=lesson_id)
-  students = lesson.student.all()
+  # students = lesson.student.all()
+  id_list = lesson.student.all().values_list('id')
+  students = Student.objects.exclude(id__in=id_list)
   student_form = StudentForm()
   return render(request, 'lessons/detail.html', {
     'lesson': lesson,
@@ -62,16 +68,8 @@ def lessons_details(request, lesson_id):
     'student_form': student_form
   })
 
-def assoc_student(request, lesson_id, student_id):
-  Lesson.objects.get(id=lesson_id).student.add(student_id)
-  print("hello")
-  return redirect('students_index')
-
-class LessonList(ListView):
-  model = Lesson
-
 # Create a Lesson in the database using the CreateView Class
-class LessonCreate(CreateView):
+class LessonCreate(LoginRequiredMixin, CreateView):
   model = Lesson
   fields = ['date', 'time', 'level', 'location']
   success_url = '/lessons'
@@ -91,17 +89,46 @@ class LessonDelete(DeleteView):
   model = Lesson
   success_url = '/lessons'
 
+# View the list of lessons
+class LessonList(ListView):
+  model = Lesson
+
 
 #-------------------- Students --------------------
+@login_required
+def assoc_student(request, lesson_id, student_id):
+  Lesson.objects.get(id=lesson_id).student.add(student_id)
+  return redirect('lessons_details', lesson_id=lesson_id)
+
+@login_required
+def delete_student(request, lesson_id, student_id):
+  Lesson.objects.get(id=lesson_id).student.remove(student_id)
+  return redirect('lessons_details', lesson_id=lesson_id)
+
+# View the list of students
 class StudentList(ListView):
   model = Student
 
+# Generate a detailed view of a student
+class StudentDetail(DetailView):
+  model = Student
+
+# Create a student
 class StudentCreate(CreateView):
   model = Student
   fields = '__all__'
 
-class StudentDetail(DetailView):
+class StudentDelete(DeleteView):
   model = Student
+  fields = '__all__'
+
+class StudentUpdate(UpdateView):
+  model = Student
+  fields = '__all__'
+
+class StudentDelete(DeleteView):
+  model = Student
+  success_url = '/students'
 
 
 #-------------------- Instructors --------------------
