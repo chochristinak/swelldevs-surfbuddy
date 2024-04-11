@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 
 <h1>Lesson Details</h1>
@@ -22,7 +22,7 @@
             {% csrf_token %}
             <button type="submit" class="waves-effect waves-light btn-small">
               <i class="material-icons">add</i> -->
-            </button>
+          </button>
           </form>
         </div>
       </div>
@@ -32,43 +32,42 @@
   <div class="row">
     <div class="col s6">
       <h3>Students in {{ lesson }}</h3>
-      {% if lesson.student.count %} 
-        {% for student in lesson.student.all %}
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">{{ student.name }}</span>
-          </div>
-          <div class="card-action">
-            <form action="{% url 'delete_student' lesson.id student.id %}" method="DELETE">
-              {% csrf_token %}
-              <button type="submit" class="waves-effect waves-light btn-small">Delete</button>
-            </form>
-          </div>
+      {% if lesson.student.count %}
+      {% for student in lesson.student.all %}
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{ student.name }}</span>
         </div>
-      {% endfor %} 
+        <div class="card-action">
+          <form action="{% url 'delete_student' lesson.id student.id %}" method="DELETE">
+            {% csrf_token %}
+            <button type="submit" class="waves-effect waves-light btn-small">Delete</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
       {% else %}
-        <h5>No Students</h5>
+      <h5>No Students</h5>
       {% endif %}
     </div>
-    <!-- Available students will come after this line -->
     <div class="col s6">
       <h3>Available Students</h3>
-      {% if students.count %} 
-        {% for student in students.all %}
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">{{ student.name }}</span>
-          </div>
-          <div class="card-action">
-            <form action="{% url 'assoc_student' lesson.id student.id %}" method="POST">
-              {% csrf_token %}
-              <button type="submit" class="waves-effect waves-light btn-small">Add</button>
-            </form>
-          </div>
+      {% if students.count %}
+      {% for student in students.all %}
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{ student.name }}</span>
         </div>
-        {% endfor %} 
+        <div class="card-action">
+          <form action="{% url 'assoc_student' lesson.id student.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="waves-effect waves-light btn-small">Add</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
       {% else %}
-        <h5>{{lesson}} Already Has All Students Available</h5>
+      <h5>{{lesson}} Already Has All Students Available</h5>
       {% endif %}
     </div>
   </div>
