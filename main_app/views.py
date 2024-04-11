@@ -6,8 +6,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Lesson, Student
-from .forms import StudentForm
+from .models import Lesson, Student, Instructor
+from .forms import StudentForm, InstructorForm
 
 
 #-------------------- Functions --------------------
@@ -129,6 +129,22 @@ class StudentUpdate(UpdateView):
 class StudentDelete(DeleteView):
   model = Student
   success_url = '/students'
+
+class InstructorDetail(DetailView):
+  model = Instructor
+
+class InstructorCreate(CreateView):
+  model = Instructor
+  fields = ['name', 'email', 'age', 'rating']
+  success_url = '/instructors'
+
+class InstructorUpdate(UpdateView):
+  model = Instructor
+  fields = '__all__'
+
+class InstructorDelete(DeleteView):
+  model = Instructor
+  success_url = '/instructors'
 
 
 #-------------------- Instructors --------------------
