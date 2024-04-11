@@ -1,3 +1,28 @@
+
+body::after {
+  content: "";
+  background: url('https://images.unsplash.com/photo-1484260001192-bfe826505222?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+button.btn, input.btn {
+  background-color: black;
+  font-family: "Noto Sans Display", sans-serif;
+}
+button.btn:hover, input.btn:hover{
+  background-color: rgb(123, 123, 123);
+
+}
 .brand-logo {
   width: 160px;
   height: 160px;
@@ -8,14 +33,16 @@
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-family: "PT Serif", serif;
   }
   nav, header.navbar-fixed, footer.page-footer{
-    background-color: rgb(147, 185, 229);
+    background-color: black;
+    opacity: 1;
   }
   .page-footer{
     align-items: baseline;
     padding-bottom: 0;
+    padding-top: 5px;
   }
   ul#slide-out.sidenav{
     border-style: groove;
