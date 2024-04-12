@@ -98,9 +98,24 @@ Do you love to surf but don't know how and finding instructors is tough?  Well, 
  
 1. Navigate to the nav bar on the top of the screen or left side of the screen.
  
-2. Click "Tide Chart".
+2. Click "Tide Chart". Note: This page will only work with an API key.
  
 3. View the tide level, locations, date, and times for the tides.
+</details>
+<details>
+<summary>API Instructions</summary>
+ 
+1. Go to <a href="https://api.marea.ooo/">Marea API</a>.
+
+2. Register for an account and confirm it in the received email. You will have 100 free requests.
+
+3. Create a .gitignore and .env file in your project directory.
+
+4. Add .env to your .gitignore file.
+
+5. Locate your API Key in your Marea API website Dashboard. 
+
+6. Add "API_KEY=[Your API Key]" to the .env file.
 </details>
 
 ### 🔗 Links
