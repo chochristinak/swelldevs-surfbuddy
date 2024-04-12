@@ -24,6 +24,11 @@ LEVELS = (
 
 
 #-------------------- Models --------------------
+
+# class User(AbstractUser):
+#   is_student = models.BooleanField('student status', default=False)
+#   is_teacher = models.BooleanField('instructor status', default=False)
+
 # Student Model
 class Student(models.Model):                                                                        
     name = models.CharField(max_length=100)                                                        # student name
