@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student, Instructor
-from .forms import StudentForm, LessonForm, InstructorForm
+from .forms import StudentForm, LessonForm, InstructorForm, StudentUserCreationForm
 
 
 #-------------------- Functions --------------------
@@ -97,6 +97,11 @@ class LessonDelete(DeleteView):
 # View the list of lessons
 class LessonList(ListView):
   model = Lesson
+
+#-----abstract user ------
+
+
+
 
 
 #-------------------- Students --------------------
