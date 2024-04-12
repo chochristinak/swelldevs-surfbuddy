@@ -12,8 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aladin&family=Allura&family=Anybody:ital,wght@0,100..900;1,100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Comfortaa:wght@300..700&family=Goudy+Bookletter+1911&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Khand:wght@300&family=Licorice&family=Miriam+Libre:wght@400;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Ojuju:wght@200..800&family=Over+the+Rainbow&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Parisienne&family=Truculenta:opsz,wght@12..72,100..900&family=Vibes&family=Yeseva+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aladin&family=Allura&family=Anybody:ital,wght@0,100..900;1,100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Comfortaa:wght@300..700&family=Goudy+Bookletter+1911&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Khand:wght@300&family=Licorice&family=Miriam+Libre:wght@400;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Ojuju:wght@200..800&family=Over+the+Rainbow&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Parisienne&family=Truculenta:opsz,wght@12..72,100..900&family=Vibes&family=Yeseva+One&display=swap"
+    rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="main.js"></script>
@@ -27,70 +29,59 @@
         <li><a href="{% url 'about' %}">About</a></li>
       </div>
       {% if user.is_authenticated %}
-        <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
-        <li><a href="{% url 'instructors_index' %}">Instructors</a></li>
-        <li><a href="{% url 'index' %}">View All Lessons</a></li>
-        <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
-        <li><a href="{% url 'students_index' %}">View All Students</a></li>
-        <li><a href="{% url 'students_create' %}">Add a Student</a></li>
-        <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
-        <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
-        <li>
-          <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn">Log Out</button>
-          </form>
-        </li>
+      <li><a href="{% url 'instructors_index' %}">Instructors</a></li>
+      <li><a href="{% url 'index' %}">Lessons</a></li>
+      <li><a href="{% url 'students_index' %}">Students</a></li>
+      <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+      <li><a href="{% url 'students_create' %}">Add a Student</a></li>
+      <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
+      <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+      <li>
+        <form action="{% url 'logout' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Log Out</button>
+        </form>
+      </li>
       {% else %}
-        <li><a href="{% url 'signup' %}">Student Sign Up</a></li>
-        <li><a href="{% url 'signup' %}">Instructor Sign Up</a></li>
-        <li><a href="{% url 'login' %}">Log In</a></li>
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a href="{% url 'login' %}">Log In</a></li>
       {% endif %}
     </ul>
   </ul>
   <header class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <nav> <!-- navbar content here  --> </nav>
         <ul id="slide-out" class="sidenav sidenav-fixed">
-
           <ul class="center">
             <div>
-              <a href="{% url 'home' %}"><img src="" class="logo-img"></a>
+              <li><a href="{% url 'about' %}">About</a></li>
             </div>
-            <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
-              <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
-              <li><a href="{% url 'instructors_index' %}">Instructors</a></li>
-              <li><a href="{% url 'index' %}">View All Lessons</a></li>
-              <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
-              <li><a href="{% url 'students_index' %}">View All Students</a></li>
-              <li><a href="{% url 'students_create' %}">Add a Student</a></li>
-              <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
-              <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
-              <li>
-                <form action="{% url 'logout' %}" method="POST">
-                  {% csrf_token %}
-                  <button type="submit" class="btn">Log Out</button>
-                </form>
-              </li>
+            <li><a href="{% url 'instructors_index' %}">Instructors</a></li>
+            <li><a href="{% url 'index' %}">Lessons</a></li>
+            <li><a href="{% url 'students_index' %}">Students</a></li>
+            <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+            <li><a href="{% url 'students_create' %}">Add a Student</a></li>
+            <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
+            <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+            <li>
+              <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn">Log Out</button>
+              </form>
+            </li>
             {% else %}
-              <li><a href="{% url 'signup' %}">Student Sign Up</a></li>
-              <li><a href="{% url 'signup' %}">Instructor Sign Up</a></li>
-              <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
-
           </ul>
         </ul>
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
   </header>
-
   <main class="container">
     {% block content %}
     {% endblock %}
-
     <script>
-      
       document.addEventListener('DOMContentLoaded', function () {
         const navEl = document.querySelector('.sidenav');
         var instances = M.Sidenav.init(navEl, {
@@ -98,10 +89,8 @@
         var collapsibleElem = document.querySelector('.collapsible');
         var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
       });
-
     </script>
   </main>
-
   <footer class="page-footer">
     <div class="container">
       <div class="row">
@@ -113,7 +102,3 @@
 </body>
 
 </html>
-
-
-
-

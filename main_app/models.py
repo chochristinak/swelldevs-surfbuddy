@@ -24,11 +24,6 @@ LEVELS = (
 
 
 #-------------------- Models --------------------
-
-# class User(AbstractUser):
-#   is_student = models.BooleanField('student status', default=False)
-#   is_teacher = models.BooleanField('instructor status', default=False)
-
 # Student Model
 class Student(models.Model):                                                                        
     name = models.CharField(max_length=100)                                                        # student name
@@ -53,10 +48,9 @@ class Student(models.Model):
 # Instructor Model
 class Instructor(models.Model):
     name = models.CharField(max_length=100)                                                        # instructor name  
-    email = models.CharField(default='example@mail.com')                                                                      # instructor email
+    email = models.CharField(default='example@mail.com')                                           # instructor email
     age = models.IntegerField(default=15)                                                          # instructor age must be older than 15
     rating = models.IntegerField(default=5)                                                        # instructor rating
-    # student = models.ForeignKey(Student, on_delete=models.CASCADE)
     
     # Foreign Key of the generic User model
     user = models.ForeignKey(User, on_delete=models.CASCADE)                                       
