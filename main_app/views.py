@@ -146,6 +146,10 @@ def instructors_index(request):
 #     'instructors': instructor,
 #     'lesson_form': lesson_form
 #   })
+# class InstructorLessonView (ListView):
+#     context_object_name = 'lesson_list'
+#     queryset = Lesson.objects.filter()
+#     template_name = 'instructor_detail.html'
 
 class InstructorDetail(DetailView):
   model = Instructor
@@ -170,9 +174,9 @@ class InstructorDelete(DeleteView):
 @login_required
 def assoc_instructor(request, lesson_id, instructor_id):
   Lesson.objects.get(id=lesson_id).instructor.add(instructor_id)
-  return redirect('instructors_details', instructor_id=instructor_id)
+  return redirect('instructor_detail', instructor_id=instructor_id)
 
 @login_required
 def delete_instructor(request, lesson_id, instructor_id):
   Lesson.objects.get(id=lesson_id).instructor.remove(instructor_id)
-  return redirect('instructors_details', instructor_id=instructor_id)
+  return redirect('instructor_detail', instructor_id=instructor_id)
