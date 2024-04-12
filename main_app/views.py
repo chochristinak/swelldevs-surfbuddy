@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student, Instructor
-from .forms import StudentForm, LessonForm
+from .forms import StudentForm, LessonForm, InstructorForm
 
 
 #-------------------- Functions --------------------
@@ -62,10 +62,15 @@ def lessons_details(request, lesson_id):
   id_list = lesson.student.all().values_list('id')
   students = Student.objects.exclude(id__in=id_list)
   student_form = StudentForm()
+  instructor_id_list = lesson.instructor.all().values_list('id')
+  instructors = Instructor.objects.exclude(id__in=instructor_id_list)
+  instructor_form = InstructorForm()
   return render(request, 'lessons/detail.html', {
     'lesson': lesson,
     'students': students,
-    'student_form': student_form
+    'student_form': student_form,
+    'instructors': instructors,
+    'instructor_form': instructor_form,
   })
 
 # Create a Lesson in the database using the CreateView Class
@@ -157,6 +162,8 @@ class InstructorDetail(DetailView):
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     context['lesson_list'] = Lesson.objects.all()
+    context['assoc_lesson'] = Lesson.instructor
+    print (context['assoc_lesson'])
     return context
 
 class InstructorCreate(CreateView):
@@ -172,11 +179,12 @@ class InstructorDelete(DeleteView):
   success_url = '/instructors'
 
 @login_required
-def assoc_instructor(request, lesson_id, instructor_id):
+def assoc_instructor(request, instructor_id, lesson_id):
   Lesson.objects.get(id=lesson_id).instructor.add(instructor_id)
-  return redirect('instructor_detail', instructor_id=instructor_id)
+  return redirect( 'lessons_details', lesson_id=lesson_id)
+  
 
 @login_required
-def delete_instructor(request, lesson_id, instructor_id):
+def delete_instructor(request, instructor_id, lesson_id):
   Lesson.objects.get(id=lesson_id).instructor.remove(instructor_id)
-  return redirect('instructor_detail', instructor_id=instructor_id)
+  return redirect('lessons_details', lesson_id=lesson_id)
