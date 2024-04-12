@@ -9,7 +9,7 @@
     <p>{{ lesson }}</p>
     <p>Date: {{ lesson.date }}</p>
     <p>Time: {{ lesson.time }}</p>
-    <p>Location: {{lesson.location }}</p>
+    <p>Location: {{lesson.get_location_display }}</p>
   </div>
   <div class="card-action">
     <a href="{% url 'lessons_details' lesson.id %}">Details</i></a>

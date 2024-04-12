@@ -85,6 +85,9 @@ class Lesson(models.Model):
     def __str__(self):
         return f"{self.get_location_display()} on {self.date}"
     
+    def level_display(self):
+        return f"{self.get_level_display()}"
+    
     # canonical URL of lesson object
     def get_absolute_url(self):
         return reverse('lessons_details', kwargs={'lesson_id': self.id})

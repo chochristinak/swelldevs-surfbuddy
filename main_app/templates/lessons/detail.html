@@ -11,9 +11,8 @@
           <span class="card-title">{{ lesson }}</span>
           <p>Date: {{ lesson.date }}</p>
           <p>Time: {{ lesson.time }}</p>
-          <p>Level: {{ lesson.level }}</p>
-          <p>Location: {{ lesson.location }}</p>
-          <p>Instructor: {{ lesson.instructor }} </p>
+          <p>Level: {{ lesson.level_display }}</p>
+          <p>Location: {{ lesson.get_location_display }}</p>
         </div>
         <div class="card-action">
           <a href="{% url 'lessons_update' lesson.id %}"><i class="material-icons">edit</i></a>
