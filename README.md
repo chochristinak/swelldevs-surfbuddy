@@ -29,7 +29,7 @@ Do you love to surf but don't know how and finding instructors is tough?  Well, 
  
  | Description | Screenshot |
  |------------ | ------------|
- | <h3 align="center">ERD</h3> | <img src="imgs/ERD.png" width="700">
+ | <h3 align="center">ERD</h3> | <img src="main_app/static/imgs/ERD.png" width="700">
  
 </details>
 
@@ -38,7 +38,7 @@ Do you love to surf but don't know how and finding instructors is tough?  Well, 
  
  | Description | Screenshot |
  |------------ | ------------|
- | <h3 align="center">Wireframes</h3> | <img src="imgs/Wireframe.png" width="700">
+ | <h3 align="center">Wireframes</h3> | <img src="main_app/static/imgs/Wireframe.png" width="700">
  
  
 </details>

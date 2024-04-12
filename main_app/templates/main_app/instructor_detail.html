@@ -20,49 +20,4 @@
     </div>
   </div>
 </div>
-<hr />
-<div class="row">
-    <div class="col s6">
-        <h3>Lessns for this Instructor</h3>
-        {% if lesson_list.count %}
-        {% for instructor in lesson_list.instructor.all %}
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{ lesson }}</span>
-            </div>
-            <div class="card-action">
-                <form action="{% url 'delete_instructor' lesson.id student.id %}" method="DELETE">
-                    {% csrf_token %}
-                    <button type="submit" class="waves-effect waves-light btn-small">Delete</button>
-                </form>
-            </div>
-        </div>
-        {% endfor %}
-        {% else %}
-        <h5>No Students</h5>
-        {% endif %}
-    </div>
-    <div class="col s6">
-        <h3>Available Lessons</h3>
-        {% if lesson_list.count %}
-        {% for lesson in lesson_list %}
-       
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{ lesson }}</span>
-            </div>
-            <div class="card-action">
-                <form action="{% url 'assoc_instructor' instructor.id lesson.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="waves-effect waves-light btn-small">Add</button>
-                </form>
-    
-            </div>
-        </div>
-        {% endfor %}
-        {% else %}
-        <h5>All Booked For Today!</h5>
-        {% endif %}
-    </div>
-</div>
 {% endblock %}

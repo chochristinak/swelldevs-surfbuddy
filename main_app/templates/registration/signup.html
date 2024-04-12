@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 
 <h1>Student Sign Up</h1>
@@ -7,14 +7,6 @@
 
 <form method="POST" action="{% url 'signup' %}">
   {% csrf_token %} {{ form.as_p }}
-  <label >name</label>
-  <input type="text" value="what's your name?">
-  <label >email</label>
-  <input type="text" value="email">
-  <label >age</label>
-  <input type="text" value="do you have an age?">
-  <label >level</label>
-  <input type="text" value="what's your level?">
   <input type="submit" class="btn" value="Sign Up" />
 </form>
 

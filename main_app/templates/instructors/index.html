@@ -2,23 +2,23 @@
 {% block content %}
 
 <div class="row">
-    <div class="col s6">
-      <h3>Instructors / My detail page</h3>
+  <div class="col s6">
+    <h3>Instructors / My detail page</h3>
 
-{% for instructor in instructors %}
-  <div class="card">
-    <div class="card-content">
-      <p>Name: {{ instructor.name }}</p>
-      <p>Email: {{ instructor.email }}</p>
-      <p>Age: {{ instructor.age }}</p>
-      <p>Rating: {{instructor.rating }}</p>
+    {% for instructor in instructors %}
+    <div class="card">
+      <div class="card-content">
+        <p>Name: {{ instructor.name }}</p>
+        <p>Email: {{ instructor.email }}</p>
+        <p>Age: {{ instructor.age }}</p>
+        <p>Rating: {{instructor.rating }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'instructor_detail' instructor.id %}">Details</i></a>
+      </div>
     </div>
-    <div class="card-action">
-      <a href="{% url 'instructor_detail' instructor.id %}">Details</i></a>
-    </div>
+    {% endfor %}
   </div>
-{% endfor %}
+</div>
+
 {% endblock %}
-
-
-

@@ -7,7 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student, Instructor
-from .forms import StudentForm, LessonForm, InstructorForm, StudentUserCreationForm
 
 
 #-------------------- Functions --------------------
@@ -20,7 +19,6 @@ def about(request):
   return render(request, 'about.html')
 
 # Render the Tide Chart page
-@login_required
 def tidechart(request):
   return render(request, 'tidechart.html')
 
@@ -49,7 +47,10 @@ def signup(request):
 # Render the Lessons Index Page with all the lessons in the database
 @login_required
 def lessons_index(request):
+  # get all the lessons from the Lessons object
   lessons = Lesson.objects.all()
+
+  # render the Lessons Index page
   return render(request, 'lessons/index.html', {
     'lessons': lessons
   })
@@ -57,51 +58,49 @@ def lessons_index(request):
 # Render the Details Page for the specified Lesson
 @login_required
 def lessons_details(request, lesson_id):
+  # get the current lesson from it's id
   lesson = Lesson.objects.get(id=lesson_id)
-  # students = lesson.student.all()
+
+  # get the ids of the students in the current lesson
   id_list = lesson.student.all().values_list('id')
+
+  # get all the students that are in the id list for the current lesson
   students = Student.objects.exclude(id__in=id_list)
-  student_form = StudentForm()
+
+  # get all ids of the instructors in the current lesson
   instructor_id_list = lesson.instructor.all().values_list('id')
+
+  # get all the instructors that are in the id list for the current lesson
   instructors = Instructor.objects.exclude(id__in=instructor_id_list)
-  instructor_form = InstructorForm()
+
+  # render the Lessons Details page
   return render(request, 'lessons/detail.html', {
     'lesson': lesson,
     'students': students,
-    'student_form': student_form,
     'instructors': instructors,
-    'instructor_form': instructor_form,
   })
 
-# Create a Lesson in the database using the CreateView Class
+# Create a Lesson
 class LessonCreate(LoginRequiredMixin, CreateView):
   model = Lesson
   fields = ['date', 'time', 'level', 'location']
   success_url = '/lessons'
 
+  # Determine if the form is valid
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-# Update a Lesson in the database using the UpdateView Class
-class LessonUpdate(UpdateView):
+# Update a Lesson
+class LessonUpdate(LoginRequiredMixin, UpdateView):
   model = Lesson
   fields = ['date', 'time', 'level', 'location']
   success_url = '/lessons'
 
-# Delete a Lesson in the database using the DeleteView Class
-class LessonDelete(DeleteView):
+# Delete a Lesson
+class LessonDelete(LoginRequiredMixin, DeleteView):
   model = Lesson
   success_url = '/lessons'
-
-# View the list of lessons
-class LessonList(ListView):
-  model = Lesson
-
-#-----abstract user ------
-
-
-
 
 
 #-------------------- Students --------------------
@@ -115,33 +114,37 @@ def delete_student(request, lesson_id, student_id):
   Lesson.objects.get(id=lesson_id).student.remove(student_id)
   return redirect('lessons_details', lesson_id=lesson_id)
 
+# Create a student
+class StudentCreate(LoginRequiredMixin, CreateView):
+  model = Student
+  fields = '__all__'
+
 # View the list of students
-class StudentList(ListView):
+class StudentList(LoginRequiredMixin, ListView):
   model = Student
 
 # Generate a detailed view of a student
-class StudentDetail(DetailView):
+class StudentDetail(LoginRequiredMixin, DetailView):
   model = Student
 
-# Create a student
-class StudentCreate(CreateView):
-  model = Student
-  fields = '__all__'
-
-class StudentDelete(DeleteView):
+# Update the student information
+class StudentUpdate(LoginRequiredMixin, UpdateView):
   model = Student
   fields = '__all__'
 
-class StudentUpdate(UpdateView):
+# Delete the student
+class StudentDelete(LoginRequiredMixin, DeleteView):
   model = Student
   fields = '__all__'
 
-class StudentDelete(DeleteView):
+# Delete the student
+class StudentDelete(LoginRequiredMixin, DeleteView):
   model = Student
   success_url = '/students'
 
 
 #-------------------- Instructors --------------------
+# Render the Instructors Index Page with all the instructors
 @login_required
 def instructors_index(request):
   instructors = Instructor.objects.all()
@@ -149,47 +152,33 @@ def instructors_index(request):
     'instructors': instructors,
   })
 
-# def instructor_detail(request, instructor_id):
-#   instructor = Instructor.objects.get(id=instructor_id)
-#   lesson_form = LessonForm()
-#   return render(request, 'instructors/detail.html', {
-#     'instructors': instructor,
-#     'lesson_form': lesson_form
-#   })
-# class InstructorLessonView (ListView):
-#     context_object_name = 'lesson_list'
-#     queryset = Lesson.objects.filter()
-#     template_name = 'instructor_detail.html'
-
-class InstructorDetail(DetailView):
-  model = Instructor
-
-  def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['lesson_list'] = Lesson.objects.all()
-    context['assoc_lesson'] = Lesson.instructor
-    print (context['assoc_lesson'])
-    return context
-
-class InstructorCreate(CreateView):
-  model = Instructor
-  fields = '__all__'
-
-class InstructorUpdate(UpdateView):
-  model = Instructor
-  fields = '__all__'
-
-class InstructorDelete(DeleteView):
-  model = Instructor
-  success_url = '/instructors'
-
+# Associate an instructor with a lesson
 @login_required
 def assoc_instructor(request, instructor_id, lesson_id):
   Lesson.objects.get(id=lesson_id).instructor.add(instructor_id)
   return redirect( 'lessons_details', lesson_id=lesson_id)
-  
 
+# Unassociate an instructor with a lesson
 @login_required
 def delete_instructor(request, instructor_id, lesson_id):
   Lesson.objects.get(id=lesson_id).instructor.remove(instructor_id)
   return redirect('lessons_details', lesson_id=lesson_id)
+
+# Create an instructor
+class InstructorCreate(LoginRequiredMixin, CreateView):
+  model = Instructor
+  fields = '__all__'
+
+# Show a list of the instructor details
+class InstructorDetail(LoginRequiredMixin, DetailView):
+  model = Instructor
+
+# Update the instructor
+class InstructorUpdate(LoginRequiredMixin, UpdateView):
+  model = Instructor
+  fields = '__all__'
+
+# Delete the instructor
+class InstructorDelete(LoginRequiredMixin, DeleteView):
+  model = Instructor
+  success_url = '/instructors'

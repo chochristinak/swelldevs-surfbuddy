@@ -16,29 +16,27 @@
 <nav>
   <div class="nav-wrapper">
     <a href="{% url 'home' %}" class="brand-logo center">&nbsp;&nbsp;Surf Buddy</a></li>
-    <!-- <img class="circle responsive-image"src="https://totemsurftribe.files.wordpress.com/2024/04/21fe4e7b-ca7a-4713-bbed-20265bfdab48.jpeg?resize=438%2C438"> -->
-
-
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="{% url 'about' %}">About</a></li>
+      <div>
+        <li><a href="{% url 'about' %}">About</a></li>
+      </div>
       {% if user.is_authenticated %}
-        <li><a href="{% url 'student_detail' user.id %}">Profile Page</a></li>
-        <li><a href="{% url 'index' %}">View All Lessons</a></li>
-        <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
-        <li><a href="{% url 'students_index' %}">View All Students</a></li>
-        <li><a href="{% url 'students_create' %}">Add a Student</a></li>
-        <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
-        <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
-        <li>
-          <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn">Log Out</button>
-          </form>
-        </li>
+      <li><a href="{% url 'instructors_index' %}">Instructors</a></li>
+      <li><a href="{% url 'index' %}">Lessons</a></li>
+      <li><a href="{% url 'students_index' %}">Students</a></li>
+      <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
+      <li><a href="{% url 'students_create' %}">Add a Student</a></li>
+      <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
+      <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+      <li>
+        <form action="{% url 'logout' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Log Out</button>
+        </form>
+      </li>
       {% else %}
-        <li><a href="{% url 'signup' %}">Student Sign Up</a></li>
-        <li><a href="{% url 'signup' %}">Instructor Sign Up</a></li>
-        <li><a href="{% url 'login' %}">Log In</a></li>
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a href="{% url 'login' %}">Log In</a></li>
       {% endif %}
     </ul>
   </div>
@@ -47,11 +45,8 @@
 <body>
   <main class="container">
     {% block content %}
-   
     <h1>Home</h1>
-   
     <div class="row">
-
       <div class="col s4">
         <!-- Promo Content 1 goes here -->
       </div>
@@ -61,9 +56,7 @@
       <div class="col s4">
         <!-- Promo Content 3 goes here -->
       </div>
-
     </div>
-
     {% endblock %}
   </main>
   <footer class="page-footer">
