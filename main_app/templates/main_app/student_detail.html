@@ -14,8 +14,8 @@
         <p>User: {{ student.user }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'students_update' student.id %}">Edit</a>
-        <a href="{% url 'students_delete' student.id %}">Delete</a>
+        <a href="{% url 'students_update' student.id %}" class><i class="material-icons" style="color: black">edit</i></a>
+        <a href="{% url 'students_delete' student.id %}"></a><i class="material-icons" style="color: black">delete</i></a>
       </div>
     </div>
   </div>
