@@ -161,11 +161,13 @@ class LessonDelete(LoginRequiredMixin, DeleteView):
 
 
 #-------------------- Students --------------------
+# Associate a student with a lesson
 @login_required
 def assoc_student(request, lesson_id, student_id):
   Lesson.objects.get(id=lesson_id).student.add(student_id)
   return redirect('lessons_details', lesson_id=lesson_id)
 
+# Unassociate a student with a lesson
 @login_required
 def delete_student(request, lesson_id, student_id):
   Lesson.objects.get(id=lesson_id).student.remove(student_id)

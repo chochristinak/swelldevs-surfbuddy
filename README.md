@@ -1,7 +1,7 @@
 # <h1 align="center">SURF BUDDY</h1>
- #### <h3 align="center">Heroku link coming soon...</h3>
- 
- <h4 align="center">SwellDevs</h4>      
+#### <h3 align="center">Heroku link coming soon...</h3>
+<h4 align="center">SwellDevs</h4>
+<img src="main_app/static/imgs/textlogo.png">
  
  <div align="center">
  <a href="https://www.linkedin.com/in/nicholas-dimartino/" target="_blank">
