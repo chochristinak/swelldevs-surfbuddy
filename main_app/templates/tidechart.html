@@ -1,5 +1,20 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
+
 <h1>Tide Chart</h1>
-<hr>
-<footer>All Rights Reserved, &copy; 2024 Surf Buddy / SwellDevs</footer>
+
+<body>
+  <h4>Date: {{ date }}</h4>
+  <div class="col s6">
+  {% for i in extremes %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ i.state }}</span>
+        <p>Height: {{ i.height }}</p>
+        <p>Datetime: {{ i.datetime }}</p>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</body>
 {% endblock %}
