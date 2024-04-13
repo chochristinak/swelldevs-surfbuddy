@@ -15,11 +15,19 @@ body::after {
   background-size: cover;
 }
 
-button.btn, input.btn {
-  background-color: black;
-  font-family: "Noto Sans Display", sans-serif;
+label{
+  font-family: anybody;
+  font-weight: 400;
+  color: rgb(17, 15, 31);
 }
-button.btn:hover, input.btn:hover{
+.card{
+  opacity: .7;
+}
+.btn-small, button.btn, input.btn {
+  background-color: black;
+  font-family: "PT Serif", sans-serif;
+}
+.btn-small, button.btn:hover, input.btn:hover{
   background-color: rgb(123, 123, 123);
 
 }
