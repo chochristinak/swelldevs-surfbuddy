@@ -45,7 +45,6 @@ body {
   }
   nav, header.navbar-fixed, footer.page-footer{
     background-color: black;
-    opacity: 1;
   }
   .page-footer{
     align-items: baseline;
