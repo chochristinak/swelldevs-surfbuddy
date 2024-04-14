@@ -7,11 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student, Instructor
-import requests
+# import requests
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from pathlib import Path
-load_dotenv(Path('.env'))
+# load_dotenv(Path('.env'))
 
 
 #-------------------- Functions --------------------
