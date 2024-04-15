@@ -3,11 +3,11 @@
 {% block content %}
 <h1 id="page-headlines">Delete Student</h1>
 
-<h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
+<h4>Are you sure you want to delete <span class="white-text">{{ object.name }}</span>?</h4>
 
 <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes - Delete!" class="waves-effect waves-light btn-small"></a>
-    <a href="{% url 'student_detail' object.id %}">Cancel</a>
+    <a href="{% url 'student_detail' object.id %}" style="color:whitesmoke">Cancel</a>
 </form>
 {% endblock %}

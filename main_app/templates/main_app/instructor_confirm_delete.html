@@ -5,12 +5,12 @@
 
 <h4>
   Are you sure you want to delete
-  <span class="teal-text">{{ object.name }}</span>?
+  <span class="white-text">{{ object.name }}</span>?
 </h4>
 
 <form action="" method="POST">
   {% csrf_token %}
   <input type="submit" value="Yes - Delete!" class="btn" />
-  <a href="{% url 'instructor_detail' instructor.id %}">Cancel</a>
+  <a href="{% url 'instructor_detail' instructor.id %}" style="color:white">Cancel</a>
 </form>
 {% endblock %}

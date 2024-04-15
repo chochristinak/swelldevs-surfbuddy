@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<h3 id="header"> Meet Our Instructors </h3>
 <div class="row">
-  <div class="col s6">
-    <h3 id="page-headlines"> Meet Our Instructors </h3>
-
+  <div class="row s6">
     {% for instructor in instructors %}
-    <div class="card">
+    <div class="card" id="instructor-index">
       <div class="card-content">
         <p>Name: {{ instructor.name }}</p>
         <p>Email: {{ instructor.email }}</p>
@@ -16,7 +14,6 @@
       <div class="card-action">
         <a href="{% url 'instructor_detail' instructor.id %}" style="color: rgb(81, 129, 166);">Details</i></a>
       </div>
-  
     </div>
     {% endfor %}
   </div>

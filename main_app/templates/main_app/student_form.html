@@ -7,7 +7,7 @@
 <h3 id="page-headlines">Add Student</h3>
 {% endif %}
 
-<form action="" method="post">
+<form action="" method="post" class="create-form">
   {% csrf_token %}
   <table>
     {{ form.as_table }}

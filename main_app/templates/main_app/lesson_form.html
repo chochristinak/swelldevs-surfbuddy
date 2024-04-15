@@ -7,7 +7,7 @@
 <h3 id="page-headlines">Add Lesson</h3>
 {% endif %}
 
-<form action="" method="POST">
+<form action="" method="POST" class="create-form">
   {% csrf_token %}
   <table>
     {{ form.as_table }}
@@ -20,6 +20,15 @@
   M.FormSelect.init(selectLevelEl);
   const selectLocationEl = document.getElementById("id_location");
   M.FormSelect.init(selectLocationEl);
+
+  const dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
 </script>
+
 
 {% endblock %}

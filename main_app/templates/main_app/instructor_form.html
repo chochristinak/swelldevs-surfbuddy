@@ -4,10 +4,10 @@
 {% if object %}
 <h1 id="page-headlines">Edit <span class="white-text">{{object.name}}</span></h1>
 {% else %}
-<h1 id="page-headlines">Add Instructor</h1>
+<h3 id="page-headlines">Add Instructor</h3>
 {% endif %}
 
-<form action="" method="post">
+<form action="" method="post" class="create-form">
   {% csrf_token %}
   <table>
     {{ form.as_table }}
@@ -21,6 +21,7 @@
   M.FormSelect.init(selectStudentEl);
   const selectUserEl = document.getElementById("id_user");
   M.FormSelect.init(selectUserEl);
+          
 </script>
 
 {% endblock %}
