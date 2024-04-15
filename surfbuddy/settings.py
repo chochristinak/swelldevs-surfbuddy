@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'surfbuddy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'surfbuddy',
+        'NAME': 'surfbuddy2',
     }
 }
 
