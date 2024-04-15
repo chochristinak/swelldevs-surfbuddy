@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <script src="{% static 'js/main.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <nav>
@@ -46,7 +47,7 @@
   <main class="container">
     {% block content %}
     <div class="center">
-      <h1>Welcome</h1>
+      <h1 id="page-headlines">Welcome</h1>
       <a href="{% url 'about' %}" class="brand-logo center"><img
           src="https://totemsurftribe.files.wordpress.com/2024/04/screenshot_2024-04-12_at_12.52.55___pm-1.png" style="opacity: .7" class="circle"></a>
       <div class="row">

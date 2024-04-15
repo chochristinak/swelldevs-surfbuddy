@@ -2,7 +2,7 @@
 body::after {
   content: "";
   background: url('https://images.unsplash.com/photo-1484260001192-bfe826505222?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  opacity: 0.5;
+  opacity: 1.0;
   top: 0;
   left: 0;
   bottom: 0;
@@ -11,9 +11,28 @@ body::after {
   z-index: -1;   
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-size: cover;
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: url('https://images.unsplash.com/photo-1484260001192-bfe826505222?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  opacity: 1.0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 
 label{
   font-family: anybody;
@@ -43,8 +62,14 @@ label{
 body {
    font-family: "PT Serif", serif;
   }
-  nav, header.navbar-fixed, footer.page-footer{
+  nav, footer.page-footer{
     background-color: black;
+    font-family: "Quicksand";
+    font-weight: 300;
+  }
+  header.navbar-fixed {
+    background-color: black;
+    opacity: 1.0;
   }
   .page-footer{
     align-items: baseline;
@@ -81,4 +106,52 @@ body {
     main {
       flex: 1 0 auto;
     }
+
+  #page-headlines {
+    font-family: "Quicksand";
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: light;
+    }
+
+  .card-content {
+    font-family: "Quicksand";
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: light;
+  }
+
+  .card {
+    background-color: #FAF9F6;
+    display: inline-block;
+    position: relative;
+  }
   
+  
+  .card-action {
+    font-family: "Quicksand";
+    column-span: 3;
+    background-color:;
+  }
+
+  #form-text {
+    font-family: "Quicksand";
+  }
+  #about-surf-text {
+    font-family: "Quicksand";
+    font-weight: 500 bold;
+    font-size: 16px;
+
+  }
+
+  #about-surf-buddy-text {
+    font-family: "Quicksand";
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+
+  .carousel {
+    font-family: "Quicksand";
+    font-weight: 300;
+  }

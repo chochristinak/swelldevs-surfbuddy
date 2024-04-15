@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Aladin&family=Allura&family=Anybody:ital,wght@0,100..900;1,100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Comfortaa:wght@300..700&family=Goudy+Bookletter+1911&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Khand:wght@300&family=Licorice&family=Miriam+Libre:wght@400;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Ojuju:wght@200..800&family=Over+the+Rainbow&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Parisienne&family=Truculenta:opsz,wght@12..72,100..900&family=Vibes&family=Yeseva+One&display=swap"
     rel="stylesheet">
@@ -99,8 +100,13 @@
         var collapsibleElem = document.querySelector('.collapsible');
         var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
       });
-      $.backstretch('body.background')
     </script>
+       <script type="text/javascript">
+        $(document).ready(function() {
+            $.backstretch("'https://images.unsplash.com/photo-1484260001192-bfe826505222?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'");
+          });
+        </script>
+    
   </main>
   <footer class="page-footer">
     <div class="container">
