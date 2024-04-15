@@ -7,11 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Lesson, Student, Instructor
-# import requests
+import requests
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from pathlib import Path
-# load_dotenv(Path('.env'))
+load_dotenv(Path('.env'))
 
 
 #-------------------- Functions --------------------
@@ -38,7 +38,7 @@ def tidechart(request):
   # params = {
   #   'latitude': 11.4701,                      # Popoyo Latitude
   #   'longitude': 86.1249,                     # Popoyo Longitude
-  #   'datetime': '2024-04-13T00:05+00:00'      # date to see tides
+  #   'datetime': '2024-04-15T00:05+00:00'      # date to see tides
   # }
 
   # response data from the API call
@@ -46,6 +46,7 @@ def tidechart(request):
   
   # date = response['datetime']
   # extremes = response['extremes']
+  # heights = response['heights']
 
   # full response data from API call NOTE: only print this to analyze the received data 
   # print(response)
@@ -72,10 +73,29 @@ def tidechart(request):
       'datetime': '2024-04-13T17:48:12+00:00'
     }
   ]
+  
+  # convert data heights and times to be more readable
+  for e in extremes:
+    # convert meters to feet
+    e['height'] *= 3.281
+    
+    # if the value is negative, make it positive
+    if (e['height'] < 0):
+      e['height'] *= -1
 
+    # format the heights to two decimal places
+    e['height'] = "%.2f" % round(e['height'], 2)
+
+    # det only the time from the datetime string
+    e['datetime'] = e['datetime'][11:16]
+
+  # save the time from the datetime string
+  time = date[11:16]
+   
   # render the Tide Chart Page with the data
   return render(request, 'tidechart.html', {
-    'date': date,
+    'date': date[:10],
+    'time': time,
     'extremes': extremes
   })
 
