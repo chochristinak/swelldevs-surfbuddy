@@ -27,52 +27,51 @@ def about(request):
 def tidechart(request):
   # NOTE: comment out URL, headers, params, response, date, and extremes to make an API request
   # request URL to the Marea API
-  # URL = 'https://api.marea.ooo/v2/tides'
+  URL = 'https://api.marea.ooo/v2/tides'
 
   # headers for the API request with the API key
-  # headers = {
-  #   'x-marea-api-token': os.getenv('API_KEY')
-  # }
+  headers = {
+    'x-marea-api-token': os.getenv('API_KEY')
+  }
 
   # parameters needed to specify API data, these values can be changed
-  # params = {
-  #   'latitude': 11.4701,                      # Popoyo Latitude
-  #   'longitude': 86.1249,                     # Popoyo Longitude
-  #   'datetime': '2024-04-15T00:05+00:00'      # date to see tides
-  # }
+  params = {
+    'latitude': 11.4701,                      # Popoyo Latitude
+    'longitude': 86.1249,                     # Popoyo Longitude
+    'datetime': '2024-04-15T00:05+00:00'      # date to see tides
+  }
 
   # response data from the API call
-  # response = requests.get(URL, headers = headers, params = params).json()
+  response = requests.get(URL, headers = headers, params = params).json()
   
-  # date = response['datetime']
-  # extremes = response['extremes']
-  # heights = response['heights']
+  date = response['datetime']
+  extremes = response['extremes']
 
   # full response data from API call NOTE: only print this to analyze the received data 
   # print(response)
   
   # Use this constant data for testing to reduce the number of times you retrieve data. The API only allows for 100 free requests
-  date = '2024-04-12T23:28:05+00:00'
-  extremes = [
-    {
-      'timestamp': 1712986780, 
-      'height': 0.431819352, 
-      'state': 'HIGH TIDE', 
-      'datetime': '2024-04-13T05:39:40+00:00'
-    }, 
-    {
-      'timestamp': 1713010066, 
-      'height': -0.3024410408, 
-      'state': 'LOW TIDE', 
-      'datetime': '2024-04-13T12:07:46+00:00'
-    }, 
-    {
-      'timestamp': 1713030492, 
-      'height': 0.153368458, 
-      'state': 'HIGH TIDE', 
-      'datetime': '2024-04-13T17:48:12+00:00'
-    }
-  ]
+  # date = '2024-04-12T23:28:05+00:00'
+  # extremes = [
+  #   {
+  #     'timestamp': 1712986780, 
+  #     'height': 0.431819352, 
+  #     'state': 'HIGH TIDE', 
+  #     'datetime': '2024-04-13T05:39:40+00:00'
+  #   }, 
+  #   {
+  #     'timestamp': 1713010066, 
+  #     'height': -0.3024410408, 
+  #     'state': 'LOW TIDE', 
+  #     'datetime': '2024-04-13T12:07:46+00:00'
+  #   }, 
+  #   {
+  #     'timestamp': 1713030492, 
+  #     'height': 0.153368458, 
+  #     'state': 'HIGH TIDE', 
+  #     'datetime': '2024-04-13T17:48:12+00:00'
+  #   }
+  # ]
   
   # convert data heights and times to be more readable
   for e in extremes:

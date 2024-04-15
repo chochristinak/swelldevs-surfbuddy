@@ -17,6 +17,12 @@
  <a href="mailto:nick.l.dimartino@gmail.com" target="_blank">
     <img src="https://img.shields.io/badge/-nick.l.dimartino@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white">
  </a>
+ <a href="mailto:Chochristinak@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/-Chochristinak@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white">
+ </a>
+ <a href="mailto:zandergunn@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/-zandergunn@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white">
+ </a>
  </div>
 
 ## 📝Description
@@ -48,7 +54,12 @@ Do you love to surf but don't know how and finding instructors is tough?  Well, 
  
  | Description | Screenshot |
  |------------ | ------------|
- | <h3 align="center">Feed Page</h3> | <img src="https://github.com/panamruth/meet-your-classmates/raw/main/public/Screenshots/FeedPage.png" width="700">
+ | <h3 align="center">Home Page</h3> | <img src="main_app/static/imgs/home-page.png" width="700">
+ | <h3 align="center">About Page</h3> | <img src="main_app/static/imgs/about-page.png" width="700">
+ | <h3 align="center">Lesson Details</h3> | <img src="main_app/static/imgs/lesson-details.png" width="700">
+ | <h3 align="center">Instructors Page</h3> | <img src="main_app/static/imgs/instructors-page.png" width="700">
+ | <h3 align="center">Add Lesson Page</h3> | <img src="main_app/static/imgs/add-lesson.png" width="700">
+ | <h3 align="center">Tide Info Page</h3> | <img src="main_app/static/imgs/tide-info.png" width="700">
  
 </details>
 
@@ -140,5 +151,8 @@ Do you love to surf but don't know how and finding instructors is tough?  Well, 
 ## ⏭️ Next Steps
 - [ ] Find and fix bugs
 - [ ] Refactor Code
+- [ ] Add a payment system where students can sign up and instructors manage payments
+- [ ] Refactor database models to enable Student vs Instructor sign-in options
+- [ ] Give each user a more personalized experience (i.e., profile page)
 
 
