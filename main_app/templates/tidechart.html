@@ -5,13 +5,14 @@
 
 <body>
   <h5 id="page-headlines">Date: {{ date }}</h5>
+  <h5 id="page-headlines">Time: {{ time }}</h5>
   <div class="col s4">
   {% for i in extremes %}
     <div class="card">
       <div class="card-content">
         <span class="card-title">{{ i.state }}</span>
-        <p>Height: {{ i.height }}</p>
-        <p>Datetime: {{ i.datetime }}</p>
+        <p>Height: {{ i.height }}ft</p>
+        <p>Time: {{ i.datetime }}</p>
       </div>
     </div>
   {% endfor %}
