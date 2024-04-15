@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Lesson Details</h1>
+<h4 id="page-headlines">All Upcoming Lessons</h4>
 
 <div class="card-action">
   <div class="row">
@@ -26,7 +26,7 @@
   <ul class="collection with-header">
     <div class="row">
       <div class="col s3">
-        <h4>Students in this Lesson</h4>
+        <h4 id="page-headlines">Attending:</h4>
         {% if lesson.student.count %}
         {% for student in lesson.student.all %}
         <div class="card">
@@ -43,11 +43,11 @@
 
         {% endfor %}
         {% else %}
-        <h5>No Students</h5>
+        <h5 id="page-headlines">No Students</h5>
         {% endif %}
       </div>
       <div class="col s3">
-        <h4>Available Students</h4>
+        <h4 id="page-headlines">Not Attending</h4>
         {% if students.count %}
         {% for student in students.all %}
         <div class="card">
@@ -72,7 +72,7 @@
   <ul class="collection with-header">
     <div class="row">
       <div class="col s3">
-        <h4>Instructors in this Lesson</h4>
+        <h4 id="page-headlines">Lesson Instructor: </h4>
         {% if lesson.instructor.count %}
         {% for instructor in lesson.instructor.all %}
         <div class="card">
@@ -92,7 +92,7 @@
         {% endif %}
       </div>
       <div class="col s3">
-        <h4>Available Instructors</h4>
+        <h4 id="page-headlines">Available Instructors</h4>
         {% if instructors.count %}
         {% for instructor in instructors.all %}
         <div class="card">

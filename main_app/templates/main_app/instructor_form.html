@@ -2,9 +2,9 @@
 {% block content %}
 
 {% if object %}
-<h1>Edit <span class="white-text">{{object.name}}</span></h1>
+<h1 id="page-headlines">Edit <span class="white-text">{{object.name}}</span></h1>
 {% else %}
-<h1>Add Instructor</h1>
+<h1 id="page-headlines">Add Instructor</h1>
 {% endif %}
 
 <form action="" method="post">

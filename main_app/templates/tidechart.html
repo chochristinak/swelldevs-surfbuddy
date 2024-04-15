@@ -1,10 +1,10 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<h1>Tide Chart</h1>
+<h3 id="page-headlines">Tide Chart</h3>
 
 <body>
-  <h4>Date: {{ date }}</h4>
+  <h5 id="page-headlines">Date: {{ date }}</h5>
   <div class="col s4">
   {% for i in extremes %}
     <div class="card">

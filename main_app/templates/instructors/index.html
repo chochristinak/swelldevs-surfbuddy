@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col s6">
-    <h3>Instructors / My detail page</h3>
+    <h3 id="page-headlines"> Meet Our Instructors </h3>
 
     {% for instructor in instructors %}
     <div class="card">
@@ -16,6 +16,7 @@
       <div class="card-action">
         <a href="{% url 'instructor_detail' instructor.id %}" style="color: rgb(81, 129, 166);">Details</i></a>
       </div>
+  
     </div>
     {% endfor %}
   </div>
