@@ -1,4 +1,5 @@
 
+
 body::after {
   content: "";
   background: url('https://images.unsplash.com/photo-1484260001192-bfe826505222?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
@@ -14,7 +15,16 @@ body::after {
   background-attachment: fixed;
   background-size: cover;
 }
-
+.waves-effect.waves-light.btn-small {
+  font-family: "Quicksand";
+  background-color: rgb(124, 180, 214);
+}
+.waves-effect.waves-light.btn-small:hover{
+  background-color: rgb(162, 159, 159);
+}
+.navbar-fixed{
+  margin-bottom: 60px;
+}
 body {
   display: flex;
   min-height: 100vh;
@@ -33,15 +43,26 @@ body {
   background-size: cover;
 }
 
+div#home-promo.card{
+  display: flex;
+  border-radius: 5px;
+  height: 50vh;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-size: 2.5vh;
+}
+div#home-info {
+  opacity: .8;
+  padding: 20px;
+  border-radius: 40%;
 
+}
 label{
   font-family: anybody;
   font-weight: 400;
   color: rgb(17, 15, 31);
 }
-.card{
-  opacity: .7;
-}
+
 .btn-small, button.btn, input.btn {
   background-color: black;
   font-family: "PT Serif", sans-serif;
@@ -107,13 +128,14 @@ body {
       flex: 1 0 auto;
     }
 
+
   #page-headlines {
-    font-family: "Quicksand";
+    font-family: "Anybody";
     font-optical-sizing: auto;
-    font-weight: 300;
+    font-weight: 400;
     font-style: light;
     }
-
+  
   .card-content {
     font-family: "Quicksand";
     font-optical-sizing: auto;
@@ -125,6 +147,7 @@ body {
     background-color: #FAF9F6;
     display: inline-block;
     position: relative;
+    opacity: .7;
   }
   
   
@@ -133,25 +156,57 @@ body {
     column-span: 3;
     background-color:;
   }
+  
+  ul.collection.with-header {
+   flex-direction: row;
+
+  }
 
   #form-text {
     font-family: "Quicksand";
   }
+  .create-form{
+    background-color:white;
+  } 
+  
+  
+button.btn-flat.datepicker-cancel.waves-effect, button.btn-flat.datepicker-done.waves-effect{
+    color:rgb(192, 134, 183)
+  }
+ td.is-today.is-selected, .datepicker-date-display {
+    background-color: rgb(117, 176, 201);
+  }
+
+ 
   #about-surf-text {
     font-family: "Quicksand";
     font-weight: 500 bold;
     font-size: 16px;
 
   }
-
   #about-surf-buddy-text {
     font-family: "Quicksand";
     font-size: 30px;
     font-weight: bold;
   }
-
-
   .carousel {
     font-family: "Quicksand";
     font-weight: 300;
   }
+
+  #instructor-index.card {
+    max-height: 325px;
+    max-width: 375px;
+    min-width: 325px;
+  }
+
+  #lesson-detail.card{
+    max-width: 500px;
+    min-width: 500px;
+  }
+
+  #instructor-lesson.card, #student-lesson.card{
+    max-width: 200px;
+    min-width: 200px;
+  }
+

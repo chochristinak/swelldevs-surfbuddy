@@ -49,21 +49,40 @@
     <div class="center">
       <h1 id="page-headlines">Welcome</h1>
       <a href="{% url 'about' %}" class="brand-logo center"><img
-          src="https://totemsurftribe.files.wordpress.com/2024/04/screenshot_2024-04-12_at_12.52.55___pm-1.png" style="opacity: .7" class="circle"></a>
+          src="https://totemsurftribe.files.wordpress.com/2024/04/screenshot_2024-04-12_at_12.52.55___pm-1.png"
+          style="opacity: .8" class="circle"></a>
       <div class="row">
-        <div class="col s4">
-          <!-- Promo Content 1 goes here -->
+        <div id="home-info" class="col s4">
+          <div class="card" id="home-promo">
+            <div class="promo-content">
+              <h5>More Freedom.</h5>
+              Experience the freedom of the waves with Surf Buddy! Designed specifically for surf instructors and
+              students, our app simplifies lesson management, allowing instructors to focus on what they love - teaching
+              surfing.
+            </div>
+          </div>
         </div>
-        <div class="col s4">
-          <!-- Promo Content 2 goes here -->
+        <div id="home-info" class="col s4">
+          <div class="card" id="home-promo">
+            <h5>Balance Work and Play.</h5>
+            With features like lesson scheduling, lesson enrollment, student and instructor directories, and real-time
+            tide details, managing your lessons
+            has never been easier.
+          </div>
         </div>
-        <div class="col s4">
-          <!-- Promo Content 3 goes here -->
+        <div id="home-info" class="col s4">
+          <div class="card" id="home-promo">
+            <h5>Spread Stoke.</h5>
+            Dive into a seamless teaching experience with Surf Buddy, where the tide of efficiency meets the surf of
+            instruction. Paddlie into the wave of convenience today to watch your business swell up and your students
+            improve their skills.
+          </div>
         </div>
       </div>
     </div>
-      {% endblock %}
+    {% endblock %}
   </main>
+
   <footer class="page-footer">
     <div class="right">All Rights Reserved, &copy; 2024 Surf Buddy &nbsp;</div>
   </footer>

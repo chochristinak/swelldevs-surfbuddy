@@ -4,8 +4,8 @@
 <h1 id="page-headlines">Hi, {{ student.name }}!</h1>
 
 <div class="row">
-  <div class="col s6 col-offset-3">
-    <div class="card">
+  <div class="col s6">
+    <div class="card" id="student-details">
       <div class="card-content">
         <span class="card-title">{{ student.name }}</span>
         <p>Email: {{ student.email }}</p>
@@ -14,8 +14,8 @@
         <p>User: {{ student.user }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'students_update' student.id %}" class><i class="material-icons" style="color: black">edit</i></a>
-        <a href="{% url 'students_delete' student.id %}"></a><i class="material-icons" style="color: black">delete</i></a>
+        <a href="{% url 'students_update' student.id %}"><i class="material-icons" style="color: black">edit</i></a>
+        <a href="{% url 'students_delete' student.id %}"><i class="material-icons" style="color: black">delete</i></a>
       </div>
     </div>
   </div>

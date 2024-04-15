@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h4 id="page-headlines">All Upcoming Lessons</h4>
+<h4 id="page-headlines">Students & Instructors in this Lesson</h4>
 
 <div class="card-action">
   <div class="row">
-    <div class="col s6">
-      <div class="card">
+    <div class="col s9">
+      <div class="card" id="lesson-detail">
         <div class="card-content">
           <span class="card-title">{{ lesson }}</span>
           <p>Date: {{ lesson.date }}</p>
@@ -25,11 +25,11 @@
 
   <ul class="collection with-header">
     <div class="row">
-      <div class="col s3">
+      <div class="col s5">
         <h4 id="page-headlines">Attending:</h4>
         {% if lesson.student.count %}
         {% for student in lesson.student.all %}
-        <div class="card">
+        <div class="card" id="student-lesson">
           <div class="card-content">
             <span class="card-title">{{ student.name }}</span>
           </div>
@@ -46,11 +46,11 @@
         <h5 id="page-headlines">No Students</h5>
         {% endif %}
       </div>
-      <div class="col s3">
+      <div class="col s5">
         <h4 id="page-headlines">Not Attending</h4>
         {% if students.count %}
         {% for student in students.all %}
-        <div class="card">
+        <div class="card" id="student-lesson">
           <div class="card-content">
             <span class="card-title">{{ student.name }}</span>
           </div>
@@ -71,11 +71,11 @@
 
   <ul class="collection with-header">
     <div class="row">
-      <div class="col s3">
+      <div class="col s5">
         <h4 id="page-headlines">Lesson Instructor: </h4>
         {% if lesson.instructor.count %}
         {% for instructor in lesson.instructor.all %}
-        <div class="card">
+        <div class="card" id="instructor-lesson">
           <div class="card-content">
             <span class="card-title">{{ instructor.name }}</span>
           </div>
@@ -91,11 +91,11 @@
         <h5>No Instructors</h5>
         {% endif %}
       </div>
-      <div class="col s3">
+      <div class="col s5">
         <h4 id="page-headlines">Available Instructors</h4>
         {% if instructors.count %}
         {% for instructor in instructors.all %}
-        <div class="card">
+        <div class="card" id="instructor-lesson">
           <div class="card-content">
             <span class="card-title">{{ instructor.name }}</span>
           </div>

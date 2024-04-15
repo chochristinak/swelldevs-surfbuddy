@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3 id="page-headlines">All Upcoming Lessons</h3>
+
+<h3 class="header">All Upcoming Lessons</h3>
 
 {% for lesson in lessons %}
 <div class="card">
-  <div class="card-content">
-    <p>{{ lesson }}</p>
-    <p>Date: {{ lesson.date }}</p>
-    <p>Time: {{ lesson.time }}</p>
-    <p>Location: {{lesson.get_location_display }}</p>
-  </div>
-  <div class="card-action">
-    <a href="{% url 'lessons_details' lesson.id %}" style="color: rgb(59, 91, 115);">Details</i></a>
+  <div class="col s3">
+    <div class="card-content">
+      <p>{{ lesson }}</p>
+      <p>Date: {{ lesson.date }}</p>
+      <p>Time: {{ lesson.time }}</p>
+      <p>Location: {{lesson.get_location_display }}</p>
+    </div>
+    <div class="card-action">
+      <a href="{% url 'lessons_details' lesson.id %}" style="color: rgb(59, 91, 115);">Details</i></a>
+    </div>
   </div>
 </div>
 {% endfor %}

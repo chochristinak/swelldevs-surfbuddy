@@ -1,26 +1,46 @@
 <script src="https://unpkg.com/ripple-effects"></script>
 
 {% extends 'base.html' %} {% block content %}
-
+<div></div>
 <div class="center">
-    <p id="about-surf-text">For new surfers and old, level up your skills with <br><span id="about-surf-buddy-text">Surf Buddy!</span></p>
+    <p id="about-surf-text">For new surfers and old, level up your skills with <br><span id="about-surf-buddy-text"
+            style="padding-bottom:0;">Surf
+            Buddy!</span></p>
     <div class="carousel">
-        <a class="carousel-item" href="#one!" style="color:black">Manage Surf Lessons<img src="https://totemsurftribe.files.wordpress.com/2024/04/nico-bhlr-qt-l619id6w-unsplash.jpg?resize=900%2C900" /></a>
-        <a class="carousel-item" href="#two!" style="color:black">Connect & Stay in Touch<img src="https://totemsurftribe.files.wordpress.com/2024/04/elizeu-dias-xarhnplshtk-unsplash.jpg?resize=438%2C438" /></a>
-        <a class="carousel-item" href="#three!" style="color:black">Keep Your Business Organized<img src="https://totemsurftribe.files.wordpress.com/2024/04/jeremy-bishop-ceeetjednls-unsplash.jpg?resize=438%2C438" /></a>
-        <a class="carousel-item" href="#four!" style="color:black">Find Surf Buddies<img src="https://totemsurftribe.files.wordpress.com/2024/04/guy-kawasaki-2q3jhgr2mk8-unsplash.jpg?resize=438%2C438" /></a>
-        <a class="carousel-item" href="#five!" style="color:black">Improve Surf Skills<img src="https://totemsurftribe.files.wordpress.com/2024/01/img_6227.jpg?resize=900%2C900" /></a>
+        <a class="carousel-item" href="#one!" style="color:black">Manage Surf Lessons<img
+                src="https://totemsurftribe.files.wordpress.com/2024/04/nico-bhlr-qt-l619id6w-unsplash.jpg?resize=900%2C900" /></a>
+        <a class="carousel-item" href="#two!" style="color:black">Connect & Stay in Touch<img
+                src="https://totemsurftribe.files.wordpress.com/2024/04/elizeu-dias-xarhnplshtk-unsplash.jpg?resize=438%2C438" /></a>
+        <a class="carousel-item" href="#three!" style="color:black">Keep Your Business Organized<img
+                src="https://totemsurftribe.files.wordpress.com/2024/04/jeremy-bishop-ceeetjednls-unsplash.jpg?resize=438%2C438" /></a>
+        <a class="carousel-item" href="#four!" style="color:black">Find Surf Buddies<img
+                src="https://totemsurftribe.files.wordpress.com/2024/04/guy-kawasaki-2q3jhgr2mk8-unsplash.jpg?resize=438%2C438" /></a>
+        <a class="carousel-item" href="#five!" style="color:black">Improve Surf Skills<img
+                src="https://totemsurftribe.files.wordpress.com/2024/04/b69c7cc6-0925-4c6e-81ca-6c291e452015.jpg?resize=438%2C438" /></a>
     </div>
 
-<div id="about-card">
-<p id="about-surf-text">Classes available in Popoyo, Santana, and Beginner's Bay. <br> Now accepting instructor inquiries. </p>
-</div>
+    <div class="col s6">
+        <h5 class="header" style="color:white">Start Your Surf Journey With Us</h5>
+        <div class="card horizontal">
+            <div class="card-image">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content" style="opacity: .6">
+                    <p>Classes available in Popoyo, Santana, and Beginner's Bay. <br>Inquire for details about boat
+                        trips to:<br> Lance's Left, Chacocente, Gavilan, and more!</p>
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'instructors_index' %}" style="color: black; border-radius: 40%;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        carouselEl = document.querySelectorAll(".carousel");
-        var instances = M.Carousel.init(carouselEl);
-    });
-</script>
-{% endblock %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            carouselEl = document.querySelectorAll(".carousel");
+            var instances = M.Carousel.init(carouselEl);
+        });
+    </script>
+    {% endblock %}
