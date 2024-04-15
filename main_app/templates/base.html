@@ -41,7 +41,7 @@
       <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
       <li><a href="{% url 'students_create' %}">Add a Student</a></li>
       <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
-      <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+      <li><a href="{% url 'tidechart' %}">Tide Info</a></li>
       <li>
         <form action="{% url 'logout' %}" method="POST">
           {% csrf_token %}
@@ -74,7 +74,7 @@
             <li><a href="{% url 'lessons_create' %}">Add a Lesson</a></li>
             <li><a href="{% url 'students_create' %}">Add a Student</a></li>
             <li><a href="{% url 'instructors_create' %}">Add an Instructor</a></li>
-            <li><a href="{% url 'tidechart' %}">Tide Chart</a></li>
+            <li><a href="{% url 'tidechart' %}">Tide Info</a></li>
             <li>
               <form action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}
