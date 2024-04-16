@@ -1,5 +1,5 @@
 # <h1 align="center">SURF BUDDY</h1>
-#### <h3 align="center">Heroku link coming soon...</h3>
+#### <h3 align="center"><a  href="https://surfbuddy-28492932a4e1.herokuapp.com/">Try out our app on Heroku here!</a></h3>
 <h4 align="center">SwellDevs</h4>
 <img src="main_app/static/imgs/textlogo.png">
  
@@ -139,7 +139,7 @@ Do you love to surf but don't know how and finding instructors is tough?  Well, 
 
 <details open>
 <summary>Deployed Link (Heroku)</summary>
-<a href="">Coming soon...</a>
+<a href="https://surfbuddy-28492932a4e1.herokuapp.com/">https://surfbuddy-28492932a4e1.herokuapp.com/</a>
 </details>
 
 <details open>
