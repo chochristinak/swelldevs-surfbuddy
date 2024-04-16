@@ -43,7 +43,6 @@ def tidechart(request):
 
   # response data from the API call
   response = requests.get(URL, headers = headers, params = params).json()
-  
   date = response['datetime']
   extremes = response['extremes']
 
