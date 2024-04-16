@@ -173,6 +173,10 @@ ul.collection.with-header {
   font-family: "Quicksand";
 }
 
+#signup-form, #login-form{
+  background-color: white;
+  opacity: .7;
+}
 .create-form{
   background-color:white;
 } 
