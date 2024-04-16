@@ -1,7 +1,7 @@
 # <h1 align="center">SURF BUDDY</h1>
 #### <h3 align="center"><a  href="https://surfbuddy-28492932a4e1.herokuapp.com/">Try out our app on Heroku here!</a></h3>
 <h4 align="center">SwellDevs</h4>
-<img src="main_app/static/imgs/textlogo.png">
+<img src="main_app/static/imgs/logo-white-bg.png">
  
  <div align="center">
  <a href="https://www.linkedin.com/in/nicholas-dimartino/" target="_blank">
